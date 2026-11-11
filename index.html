@@ -52,9 +52,9 @@
     .eyebrow { align-self: flex-end; margin: 0 0 9px; color: var(--quiet); text-align: right; max-width: 210px; }
     .period { letter-spacing: -.09em; }
 
-    /* The middle third rolls vertically UP: the visible word recedes toward
-       the top edge, while the next word rises into view from the bottom.
-       The first and last thirds remain motionless. */
+    /* Only the middle third rotates horizontally, around a VERTICAL Y axis,
+       as the center slice of a Rubik's cube. The face moves toward the
+       left while its next face appears from the right. Top/bottom stay still. */
     .band {
       position: relative; min-height: 0; border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
@@ -63,12 +63,12 @@
     .rotor {
       position: absolute; inset: 0; width: 100%; height: 100%;
       transform-style: preserve-3d;
-      transform: translateZ(calc(-1 * var(--face-half))) rotateX(0deg);
+      transform: translateZ(calc(-1 * var(--face-half))) rotateY(0deg);
       transition: transform var(--flip-time) cubic-bezier(.67,.04,.26,.98);
       will-change: transform;
     }
     .rotor.is-flipping {
-      transform: translateZ(calc(-1 * var(--face-half))) rotateX(90deg);
+      transform: translateZ(calc(-1 * var(--face-half))) rotateY(-90deg);
     }
     .rotor.no-transition { transition: none !important; }
     .face {
@@ -78,8 +78,8 @@
       padding-inline: var(--gutter);
       overflow: hidden; transform-style: preserve-3d;
     }
-    .face--front { transform: rotateX(0deg) translateZ(var(--face-half)); }
-    .face--next { transform: rotateX(-90deg) translateZ(var(--face-half)); }
+    .face--front { transform: rotateY(0deg) translateZ(var(--face-half)); }
+    .face--next { transform: rotateY(90deg) translateZ(var(--face-half)); }
     .word {
       display: block; width: 100%; text-align: center; white-space: nowrap;
       font-size: var(--word-size, 17vw);
@@ -223,7 +223,7 @@
         node.style.setProperty("--word-size", size);
       }
       function fitDepth() {
-        band.style.setProperty("--face-half", (band.getBoundingClientRect().height / 2) + "px");
+        band.style.setProperty("--face-half", (band.getBoundingClientRect().width / 2) + "px");
       }
       function updateWords() {
         placeWord(current, words[position]);
