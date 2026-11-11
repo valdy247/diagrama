@@ -9,6 +9,7 @@
   <title>Workspace Preview — VMV Business</title>
   <link rel="stylesheet" href="/src/workspace.css">
   <script type="module" src="/src/workspace.js"></script>
+  <script type="module" src="/src/workspace-account.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -52,6 +53,38 @@
         <div><span class="w-label">WEB RESPONSIBILITY</span><strong>Manage</strong></div>
         <div><span class="w-label">MOBILE RESPONSIBILITY</span><strong>Use</strong></div>
       </div>
+      <section id="workspace-account" class="w-account" aria-labelledby="w-account-title">
+        <div class="w-account-intro">
+          <p class="w-label">REAL ACCOUNT CONNECTION / SHARED SUPABASE</p>
+          <h2 id="w-account-title">Your account.<br>One identity.</h2>
+          <p id="w-connection-help" class="w-auth-explainer" role="status">Checking secure account connection…</p>
+        </div>
+        <div id="w-login-view" class="w-auth-panel" hidden>
+          <div class="w-account-title"><h3>Sign in to your workspace</h3><span>EXISTING ACCOUNTS ONLY</span></div>
+          <p class="w-auth-explainer">Use the same email and password as Smart Call. You are signing into the same Supabase account, not creating a new one.</p>
+          <form id="w-login-form" class="w-auth-form" autocomplete="on">
+            <label for="w-email">Email</label>
+            <input id="w-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254" placeholder="you@business.com">
+            <label for="w-password">Password</label>
+            <input id="w-password" name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Your account password">
+            <button id="w-login-submit" type="submit">Sign in securely ↗</button>
+          </form>
+          <p class="w-auth-disclaimer">No signup is required here. Account registration questions will be refined in a separate phase.</p>
+        </div>
+        <div id="w-account-view" class="w-account-view" hidden>
+          <div class="w-account-title"><h3 id="w-account-name">—</h3><span>VERIFIED SESSION</span></div>
+          <p class="w-auth-email">Account: <span id="w-account-email">—</span></p>
+          <div class="w-account-stats">
+            <div><span>BUSINESS NAME</span><strong id="w-account-business">—</strong></div>
+            <div><span>SMART CALL LINE</span><strong id="w-account-line">—</strong></div>
+            <div><span>PLAN STATUS</span><strong id="w-account-plan">—</strong></div>
+            <div><span>RECORDED CALLS</span><strong id="w-account-calls">—</strong></div>
+            <div><span>LANGUAGE PAIR</span><strong id="w-account-language">—</strong></div>
+          </div>
+          <div class="w-account-actions"><button id="w-account-refresh" type="button">Refresh account ↻</button><button id="w-signout" type="button">Sign out</button></div>
+        </div>
+        <p id="w-auth-message" class="w-auth-message" role="status" aria-live="polite"></p>
+      </section>
       <section class="w-services" aria-labelledby="services-title">
         <div class="w-services-head"><div><p class="w-label">01 / CONNECTED TOOLS</p><h2 id="services-title">Your service catalog.</h2></div><p>Choose a product to see its future app and web responsibilities.</p></div>
         <div class="w-tabs" role="group" aria-label="Filter services">
