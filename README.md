@@ -1,16 +1,25 @@
-# VMV Business — Hero UI prototype
+# VMV Business — Homepage UI concept
 
-Only the hero is implemented. It is a white-and-black editorial design with three equal horizontal bands. The middle band is a genuine Three.js / WebGL cuboid with four illuminated vertical faces, rotating 90° about the Y axis every 2 seconds. Top and bottom bands remain fixed.
+Minimal, white-and-black editorial hero inspired by a clean creative-agency layout, adapted to the VMV Business identity.
 
-## Run locally
+- Compact visual navigation (no functional links)
+- Left-side brand message, copy, and service categories
+- Right-side custom monochrome SVG illustrating Calls, AI Agents, Websites, Calendar, Inventory, and CRM
+- Bottom monochrome VMV product strip
+- Responsive desktop and mobile styles; reduced-motion support
+- **Design only**: no app features, backend, authentication, active menus or CTAs
+
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Deploy
+## Production
 
-Vercel builds with `npm run build`, outputting `dist/`.
+```bash
+npm run build
+```
 
-No live links, authentication, business features or backend are included. Reduced-motion users see the static first face, and browsers without WebGL get a static word fallback.
+Vercel serves the generated `dist/` from Vite. The old Three.js rotating cube prototype was removed. No external imagery or runtime dependencies are necessary.
