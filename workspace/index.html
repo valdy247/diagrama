@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Preview the VMV Business management workspace architecture before integration with mobile services.">
+  <title>Workspace Preview — VMV Business</title>
+  <link rel="stylesheet" href="/src/workspace.css">
+  <script type="module" src="/src/workspace.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="w-top">
+    <a class="w-brand" href="/" aria-label="VMV Business Home">vmv<span>BUSINESS</span></a>
+    <div class="w-top-right">
+      <span class="w-pill">DESIGN PREVIEW · NOT CONNECTED</span>
+      <a class="w-top-link" href="/">Back to website ↗</a>
+    </div>
+  </header>
+  <div class="w-shell">
+    <aside class="w-side" aria-label="Workspace navigation">
+      <p class="w-side-kicker">FUTURE WORKSPACE</p>
+      <div class="w-side-intro">One business.<br>All your tools.</div>
+      <nav id="service-nav" class="w-service-nav" aria-label="Service selection">
+        <a class="w-side-active" href="/workspace/">Overview <span>↗</span></a>
+        <a href="/smart-call/">Smart Call ↗</a>
+        <a href="/ai-agents/">AI Agents ↗</a>
+        <a href="/web-services/">Web Services ↗</a>
+      </nav>
+      <div class="w-side-bottom">
+        <div class="w-mini-icon">↗</div>
+        <p><b>Website + app</b><br>Separate experiences. One future identity.</p>
+      </div>
+    </aside>
+    <main id="main" class="w-main">
+      <div class="w-announce">
+        <span><i aria-hidden="true"></i> WORKSPACE BLUEPRINT</span>
+        <span>01 / INTEGRATION PREPARATION</span>
+      </div>
+      <div class="w-heading">
+        <div>
+          <p class="w-label">MANAGEMENT PLATFORM / PREVIEW</p>
+          <h1>Everything,<br><strong>connected.</strong></h1>
+          <p class="w-description">A preview of how your business tools will connect to one account and one workspace. No live customer data, phone settings or services are loaded here yet.</p>
+        </div>
+        <div class="w-arrow" aria-hidden="true">↗</div>
+      </div>
+      <div class="w-stats" aria-label="Preview status">
+        <div><span class="w-label">PLANNED MODULES</span><strong id="total-services">9</strong></div>
+        <div><span class="w-label">WEB RESPONSIBILITY</span><strong>Manage</strong></div>
+        <div><span class="w-label">MOBILE RESPONSIBILITY</span><strong>Use</strong></div>
+      </div>
+      <section class="w-services" aria-labelledby="services-title">
+        <div class="w-services-head"><div><p class="w-label">01 / CONNECTED TOOLS</p><h2 id="services-title">Your service catalog.</h2></div><p>Choose a product to see its future app and web responsibilities.</p></div>
+        <div class="w-tabs" role="group" aria-label="Filter services">
+          <button type="button" class="w-filter is-selected" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="w-filter" data-filter="communication" aria-pressed="false">Communication</button>
+          <button type="button" class="w-filter" data-filter="intelligence" aria-pressed="false">Intelligence</button>
+          <button type="button" class="w-filter" data-filter="digital-presence" aria-pressed="false">Digital Presence</button>
+          <button type="button" class="w-filter" data-filter="operations" aria-pressed="false">Operations</button>
+          <button type="button" class="w-filter" data-filter="customers" aria-pressed="false">Customers</button>
+          <button type="button" class="w-filter" data-filter="growth" aria-pressed="false">Growth</button>
+        </div>
+        <div id="service-cards" class="w-cards" aria-live="polite">
+          <div class="w-card w-card-placeholder"><span>MODULE DIRECTORY</span><strong>Preparing your workspace…</strong></div>
+        </div>
+      </section>
+      <section id="service-detail" class="w-details" aria-labelledby="detail-title">
+        <p class="w-label">02 / SHARED EXPERIENCE</p>
+        <div class="w-detail-head"><h2 id="detail-title">App and web.<br>Different roles.</h2><span class="w-detail-hint">SELECT A SERVICE ABOVE</span></div>
+        <div class="w-detail-columns">
+          <div><span class="w-label">MOBILE APP</span><h3>Work on the go.</h3><ul id="mobile-actions"><li>Answer calls and use everyday tools.</li><li>View what matters during your day.</li></ul></div>
+          <div><span class="w-label">WEB PLATFORM</span><h3>Configure and manage.</h3><ul id="web-actions"><li>Set up and manage advanced service options.</li><li>Review settings, access and reports.</li></ul></div>
+        </div>
+        <div class="w-detail-footer"><span id="service-availability">No services are connected in this design preview.</span><a id="explore-service" href="/#products">View product presentation ↗</a></div>
+      </section>
+      <section class="w-integration" aria-labelledby="next-title">
+        <p class="w-label">03 / WHAT WE CONNECT NEXT</p>
+        <h2 id="next-title">One identity.<br>Clear permissions.</h2>
+        <div class="w-steps">
+          <div><span>01</span><h3>Shared identity</h3><p>Reuse the existing Supabase authentication foundation when web and app integration starts.</p></div>
+          <div><span>02</span><h3>Business context</h3><p>Load the right modules, permissions and data for the selected business after identity verification.</p></div>
+          <div><span>03</span><h3>Safe handoff</h3><p>Open advanced web settings from the app without exposing tokens or customer information in URLs.</p></div>
+        </div>
+        <p class="w-scope">This page is a functional navigation prototype, not an authenticated workspace. Connection, accounts and onboarding are intentionally reserved for the next implementation phases.</p>
+      </section>
+    </main>
+  </div>
+  <footer class="w-bottom"><span>© 2026 VMV Business</span><span>Preview only · No active account or API connection</span><a href="/">Back to home ↗</a></footer>
+</body>
+</html>
