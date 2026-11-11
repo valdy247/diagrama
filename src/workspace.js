@@ -9,6 +9,23 @@ const explore = document.getElementById("explore-service");
 const count = document.getElementById("total-services");
 const filters = [...document.querySelectorAll(".w-filter")];
 
+const spanish=document.documentElement.lang==="es";
+const localizedGroups={
+  communication:"Comunicación",intelligence:"Inteligencia",
+  "digital-presence":"Presencia digital",operations:"Operaciones",
+  customers:"Clientes",growth:"Crecimiento"
+};
+const spanishDescriptions={
+  "smart-call":"Llamadas y traducción en la app. Configuración de línea e idiomas desde la web.",
+  "ai-agents":"Diseño, revisión y control de asistentes inteligentes para tu negocio.",
+  "web-services":"Presencia digital, páginas web y consultas de clientes.",
+  inventory:"Existencias en el móvil y configuración detallada del catálogo en la web.",
+  scheduling:"Agenda diaria en el teléfono y reglas avanzadas de reservas en la web.",
+  "crm-leads":"Contactos y seguimientos rápidos con el embudo completo en la web.",
+  "business-operations":"Pedidos, equipos y tareas administrativas del negocio.",
+  "marketing-analytics":"Indicadores básicos en la app e informes completos en la web.",
+  automations:"Alertas y aprobaciones en la app; flujos avanzados en la web."
+};
 const groupNames = {
   communication: "Communication",
   intelligence: "Intelligence",
@@ -42,13 +59,14 @@ function showService(module, push = true) {
   selectedTitle.replaceChildren(
     document.createTextNode(module.name),
     document.createElement("br"),
-    make("strong", null, "App + web.")
+    make("strong", null, spanish?"App + web.":"App + web.")
   );
   fillList(mobileActions, module.mobile.actions);
   fillList(webActions, module.web.actions);
-  status.textContent = "Preview only · Service connection not yet configured.";
+  status.textContent = spanish?"Vista previa · Este servicio aún no está conectado.":"Preview only · Service connection not yet configured.";
   explore.href = module.publicPath;
-  explore.textContent = "Explore " + module.name + " ↗";
+  explore.textContent = (spanish?"Conocer ":"Explore ") + module.name + " ↗";
+  explore.href=(spanish?"/es":"")+module.publicPath;
   const url = new URL(window.location.href);
   url.searchParams.set("service", module.id);
   if (push) window.history.replaceState(null, "", url);
@@ -58,18 +76,18 @@ function renderCards(modules, filter, current) {
   const fragment = document.createDocumentFragment();
   subset.forEach(module => {
     const card = make("article", "w-card");
-    card.append(make("span", "w-card-category", groupNames[module.group] || friendly(module.group)));
+    card.append(make("span", "w-card-category", (spanish?localizedGroups[module.group]:groupNames[module.group]) || friendly(module.group)));
     card.append(make("strong", null, module.name));
-    card.append(make("p", null, serviceDescriptions[module.id] || ""));
+    card.append(make("p", null, (spanish?spanishDescriptions[module.id]:serviceDescriptions[module.id]) || ""));
     const bottom = make("div", "w-card-bottom");
-    const button = make("a", null, "View responsibilities ↗");
+    const button = make("a", null, spanish?"Ver funciones ↗":"View responsibilities ↗");
     button.href = module.workspacePath;
     button.addEventListener("click", event => {
       event.preventDefault();
       showService(module);
       document.getElementById("service-detail").scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block:"start"});
     });
-    bottom.append(button, make("span", "w-card-status", "Not connected"));
+    bottom.append(button, make("span", "w-card-status", spanish?"En preparación":"Not connected"));
     card.append(bottom);
     fragment.append(card);
   });
@@ -94,7 +112,7 @@ async function initialize() {
     const initialModule = modules.find(m => m.id === requestedId);
     if (initialModule) showService(initialModule, false);
     else {
-      selectedTitle.replaceChildren(document.createTextNode("App and web."),document.createElement("br"),make("strong",null,"Different roles."));
+      selectedTitle.replaceChildren(document.createTextNode("App and web."),document.createElement("br"),make("strong",null,spanish?"Distintas funciones.":"Different roles."));
     }
     renderCards(modules, "all");
     for (const button of filters) {
@@ -108,7 +126,7 @@ async function initialize() {
       });
     }
   } catch (error) {
-    cards.replaceChildren(make("p", "w-description", "The module directory is temporarily unavailable. Please return to the product pages."));
+    cards.replaceChildren(make("p", "w-description", spanish?"El catálogo no está disponible temporalmente. Regresa a las páginas de productos.":"The module directory is temporarily unavailable. Please return to the product pages."));
     console.error("VMV module preview:", error.message);
   }
 }
