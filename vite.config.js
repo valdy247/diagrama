@@ -23,6 +23,7 @@ export default defineConfig({
           pages.map((page) => [page, resolve(import.meta.dirname, page, "index.html")])
         ),
         spanishHome: resolve(import.meta.dirname, "es", "index.html"),
+        spanishWorkspace: resolve(import.meta.dirname, "es", "workspace", "index.html"),
         ...Object.fromEntries(
           pages.filter((page) => page !== "workspace").map((page) => ["es-" + page, resolve(import.meta.dirname, "es", page, "index.html")])
         ),
