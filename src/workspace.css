@@ -154,3 +154,5 @@ button:focus-visible,a:focus-visible{outline:2px solid #111;outline-offset:3px}
 @media(max-width:500px){.w-account{padding:22px 17px}.w-account-stats{grid-template-columns:1fr}.w-account-stats>div{min-height:75px}}
 
 .w-open-ios{border:1px solid #151515;background:#fff;padding:12px 19px;font-size:11px;cursor:pointer;font-weight:650;text-decoration:none;color:#151515;display:inline-flex;align-items:center}.w-open-ios:hover{background:#eaeaea}
+
+.w-recent-calls{margin-top:25px;border-top:1px solid #ddd;padding-top:20px}.w-recent-calls h4{font-size:13px;letter-spacing:-.015em;margin:0 0 13px}.w-recent-list{display:flex;flex-direction:column;gap:0}.w-recent-list>p{font-size:12px;color:#888;line-height:1.6;margin:0}.w-recent-item{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #e5e5e5;padding:11px 0}.w-recent-item strong{font-size:11px;font-weight:600}.w-recent-item span{font-size:10px;color:#888;text-align:right}
