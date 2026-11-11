@@ -3,19 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#ededed">
+  <meta name="theme-color" content="#ffffff">
   <meta name="description" content="VMV Business. Calls, AI agents, websites and business tools, beautifully connected.">
   <title>VMV Business — Everything, connected.</title>
   <style>
-    :root{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#141414;background:#ededed;font-synthesis:none;-webkit-font-smoothing:antialiased}
+    :root{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#141414;background:#ffffff;font-synthesis:none;-webkit-font-smoothing:antialiased}
     *,*::before,*::after{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;min-width:320px}
-    .stage{min-height:100svh;padding:clamp(14px,3.7vw,58px);display:grid;place-items:center;overflow:hidden;position:relative}
-    .stage::before,.stage::after{content:"";position:absolute;z-index:0;width:88px;height:55px;background-image:radial-gradient(#b8b8b8 1px,transparent 1.5px);background-size:14px 14px;opacity:.75}
-    .stage::before{right:14%;top:2%}
-    .stage::after{left:12%;bottom:3%}
-    .site{z-index:1;width:min(100%,1510px);min-height:min(790px,calc(100svh - 100px));background:white;box-shadow:0 32px 80px rgba(0,0,0,.075);display:flex;flex-direction:column;overflow:hidden}
+    .stage{width:100%;min-height:100svh;padding:0;background:#ffffff;overflow:hidden;position:relative}
+    
+    .site{width:100%;min-height:100svh;background:#ffffff;display:flex;flex-direction:column;overflow:hidden}
     .header{height:91px;flex:0 0 auto;padding:0 clamp(30px,4.7vw,79px);display:grid;grid-template-columns:1fr 2fr 1fr;align-items:center;gap:22px}
     .brand{display:inline-flex;gap:5px;align-items:baseline;font-weight:800;font-size:29px;letter-spacing:-2.1px;line-height:1}
     .brand small{font-size:8px;letter-spacing:1.7px;font-weight:700;transform:translateY(-2px)}
@@ -69,9 +67,8 @@
       .footer-right{padding-inline:15px}
     }
     @media (max-width:700px){
-      .stage{padding:12px;display:block}
-      .stage::before,.stage::after{display:none}
-      .site{min-height:calc(100svh - 24px)}
+      .stage{padding:0;display:block}
+      .site{min-height:100svh}
       .header{height:76px;padding-inline:25px}
       .brand{font-size:26px}
       .hero{display:flex;flex-direction:column;justify-content:flex-start;padding:38px 25px 10px;min-height:unset;gap:4px;align-items:stretch}
