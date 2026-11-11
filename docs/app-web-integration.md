@@ -2,8 +2,8 @@
 
 ## Phase boundaries
 
-**Phase 1 (now):** polished marketing website and separate product pages; public service catalog, web workspace prototype, responsive navigation and foundation for future shared identity. This is NOT a live authenticated backend.
-**Phase 2 (next):** integrate the existing mobile app from valdy247/smartjob with the new web management platform. The mobile app remains a straightforward business phone; deep service settings are handled on the web. Audit existing Supabase Auth before building any login integration.
+**Phase 1 (completed):** polished marketing website and separate product pages; public service catalog, web workspace prototype, responsive navigation and foundation for future shared identity. The public marketing site is static; the workspace now has real Supabase authentication and read-only account overview.
+**Phase 2 (in progress):** integrate the existing mobile app from valdy247/smartjob with the new web management platform. The mobile app remains a straightforward business phone; deep service settings are handled on the web. Existing Supabase Auth and owner-only RLS policies were inspected before adding login.
 **Phase 3 (later):** decide which account questions are essential at registration and which business/service setup questions to defer. Do not implement the full onboarding form yet.
 
 ## Public service module registry
@@ -71,5 +71,26 @@ These paths are an initial proposal, not existing production APIs. First reconci
 
 - Connected Supabase project: `wrnlhjujsbigculndivs` (the existing non-Academy Supabase project).
 - The existing Smart Call web backend's Vercel `NEXT_PUBLIC_SUPABASE_URL` resolves to this same project reference. Its public URL and publishable key configuration are present; its server-only secret key must never be copied to a client bundle.
-- This verifies **project identity only**. It does not prove that authenticated sessions, row-level policies or app/web handoff are wired in `diagrama` yet.
+- Project identity, owner-only read RLS policies and browser login wiring have now been checked. Full login and native deep-link acceptance still require test-account and iPhone validation.
 - Do not create another Supabase project or duplicate user accounts. Reuse the same existing project in the next integration phase after security and schema review.
+
+## Implemented in phase 2 (2026-11-11)
+
+- Web project Vercel now contains `VITE_SUPABASE_URL` and `VITE_SUPABASE_PUBLISHABLE_KEY`, copied ONLY from the existing Smart Call public client settings. No service-role secret is used by Vite.
+- `/workspace/` supports **sign-in with an existing Supabase account** (email/password), independently authenticated in the browser, plus sign out and refresh.
+- When verified, the workspace loads only owner-scoped fields from `smartjob_profiles`, `smartjob_phone_routes`, `smartjob_billing_accounts`, `smartjob_call_settings` and an authenticated count from `smartjob_call_sessions`.
+- Supabase `pg_policies` audit verified SELECT owner policies using `auth.uid()` for all five tables. This remains **user-scoped**, not multi-tenant business membership.
+- No account registration form has been added; onboarding decisions remain phase 3.
+- Native Smart Call app integration is isolated on GitHub branch `feat/vmv-business-web-handoff` and draft PR #26, not merged into the active calling pilot.
+- Native app gets a catalog and settings handoff using allowlisted module IDs with HTTPS. No credentials, session IDs or personal data travel in links.
+- The web offers an iPhone handoff via `smartjob://calls`; native code accepts only `calls`/`services` and requires a signed-in app session before navigation.
+- Existing Next.js Smart Call web workspace receives a link to the unified VMV Business portal.
+
+## What is still required before phase 2 is complete
+
+- Verify native iOS TypeScript, EAS internal preview and both directions of the deep link on a physical iPhone.
+- Test login with a real authorized test account; only that user's profile, route, plan and call count should appear.
+- Re-test the existing pilot's Twilio PushKit, incoming calls, interpretation, billing and logout behavior.
+- Review tenant/business membership requirements and server-side entitlements **before** enabling employee access or service-setting mutations.
+- Do not assume automatic cross-domain SSO: app Keychain and browser session storage are separate; they share the same Supabase identity but require independent login unless a reviewed SSO handoff is later implemented.
+- All future phone/agent/site administration mutations must pass backend authorization, validation and audit logging.
