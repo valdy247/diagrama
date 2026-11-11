@@ -66,3 +66,10 @@ These paths are an initial proposal, not existing production APIs. First reconci
 - Documented app/web responsibilities.
 - Shared identity and real integration NOT claimed to be complete.
 - During phase 2: test authenticated handoff, permissions, calling UX, deep links and real backend responses before claiming service readiness.
+
+## Verified connection context (2026-11-11)
+
+- Connected Supabase project: `wrnlhjujsbigculndivs` (the existing non-Academy Supabase project).
+- The existing Smart Call web backend's Vercel `NEXT_PUBLIC_SUPABASE_URL` resolves to this same project reference. Its public URL and publishable key configuration are present; its server-only secret key must never be copied to a client bundle.
+- This verifies **project identity only**. It does not prove that authenticated sessions, row-level policies or app/web handoff are wired in `diagrama` yet.
+- Do not create another Supabase project or duplicate user accounts. Reuse the same existing project in the next integration phase after security and schema review.
