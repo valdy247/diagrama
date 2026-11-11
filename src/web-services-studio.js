@@ -41,6 +41,7 @@
     charcoal:{accent:'#25242c',soft:'#e9e9ef',ink:'#202026',warm:'#ffffff'}
   };
   const form = root.querySelector('#ws-editor-form');
+  form.addEventListener('submit', event => event.preventDefault());
   const frame = root.querySelector('#ws-preview-frame');
   const status = document.getElementById('ws-status');
   const shell = root.querySelector('#ws-frame-shell');
