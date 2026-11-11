@@ -11,6 +11,8 @@
  <link rel="alternate" hreflang="en" href="https://vmv-business-design.vercel.app/web-services/">
  <link rel="alternate" hreflang="es" href="https://vmv-business-design.vercel.app/es/web-services/">
  <link rel="stylesheet" href="/src/product-pages.css">
+ <link rel="stylesheet" href="/src/web-services-studio.css">
+ <script type="module" src="/src/web-services-studio.js"></script>
 </head>
 <body>
  <header class="p-header">
@@ -26,6 +28,7 @@
     <p class="p-lead">Your website should feel like your best first impression.</p>
     <p class="p-description">A place to create, manage and evolve your business's online presence — with thoughtful design, contact forms and services that connect with the rest of your workspace.</p>
     <div class="p-tags"><span>WEBSITE DESIGN</span><span>ONLINE PRESENCE</span><span>FORMS</span></div>
+    <a class="p-back" href="#studio">Try the website studio ↗</a>
     <a class="p-back" href="/#products">← All products</a>
    </div>
    <div class="p-preview" role="img" aria-label="Conceptual preview of the Web Services service, showing fictional sample information">
@@ -35,7 +38,68 @@
    </div>
   </div>
  </section>
- <div class="p-divider-band"><span>ONE BUSINESS. THE RIGHT TOOLS.</span><span>WEB SERVICES / DIGITAL PRESENCE</span><span>© 2026</span></div>
+ 
+<section class="ws-section" id="studio" aria-labelledby="ws-title">
+ <div id="ws-studio">
+  <div class="ws-topline"><span>WEBSITE STUDIO / FIRST VERSION</span><span>LOCAL PROTOTYPE</span></div>
+  <div class="ws-intro"><h2 id="ws-title">Create your site.<br><strong>See every change.</strong></h2><p>Customize your content, preview the page on desktop or mobile, and download a complete HTML file to keep your work.</p></div>
+  <div class="ws-app">
+   <div class="ws-controls">
+    <div class="ws-controls-title"><strong>Your website</strong><small>LIVE EDITOR</small></div>
+    <form id="ws-editor-form" class="ws-fields" autocomplete="off">
+     <label class="ws-field"><span>Brand name</span><input name="brand" type="text" data-ws-field maxlength="600" placeholder=""></label>
+     <label class="ws-field"><span>Intro label</span><input name="eyebrow" type="text" data-ws-field maxlength="600" placeholder=""></label>
+     <label class="ws-field"><span>Hero headline</span><input name="title" type="text" data-ws-field maxlength="600" placeholder=""></label>
+     <label class="ws-field"><span>Short description</span><textarea name="description" data-ws-field maxlength="600" rows="3" placeholder=""></textarea></label>
+     <label class="ws-field"><span>About your business</span><textarea name="about" data-ws-field maxlength="600" rows="3" placeholder=""></textarea></label>
+     <label class="ws-field"><span>Services (one per line)</span><textarea name="services" data-ws-field maxlength="1200" rows="4" placeholder=""></textarea></label>
+     <p class="ws-field-note">Up to six services, each shown as its own card.</p>
+     <fieldset class="ws-fieldset"><legend>Layout</legend><div class="ws-choices">
+      <button class="ws-choice" type="button" data-ws-choice="template" data-value="editorial" aria-pressed="true">Editorial</button>
+      <button class="ws-choice" type="button" data-ws-choice="template" data-value="bold" aria-pressed="false">Bold</button>
+      <button class="ws-choice" type="button" data-ws-choice="template" data-value="minimal" aria-pressed="false">Minimal</button>
+     </div></fieldset>
+     <fieldset class="ws-fieldset"><legend>Color</legend><div class="ws-choices">
+      <button class="ws-choice" type="button" data-ws-choice="palette" data-value="lavender" aria-pressed="true">Lavender</button>
+      <button class="ws-choice" type="button" data-ws-choice="palette" data-value="mint" aria-pressed="false">Mint</button>
+      <button class="ws-choice" type="button" data-ws-choice="palette" data-value="terracotta" aria-pressed="false">Terracotta</button>
+      <button class="ws-choice" type="button" data-ws-choice="palette" data-value="charcoal" aria-pressed="false">Charcoal</button>
+     </div></fieldset>
+     <label class="ws-field"><span>Contact email</span><input name="email" type="email" data-ws-field maxlength="600" placeholder=""></label>
+     <label class="ws-field"><span>Phone number</span><input name="phone" type="tel" data-ws-field maxlength="600" placeholder=""></label>
+     <label class="ws-field"><span>Business hours</span><input name="hours" type="text" data-ws-field maxlength="600" placeholder=""></label>
+     <label class="ws-field"><span>Button label</span><input name="cta" type="text" data-ws-field maxlength="600" placeholder=""></label>
+     <label class="ws-field"><span>SEO page title</span><input name="seoTitle" type="text" data-ws-field maxlength="600" placeholder=""></label>
+     <label class="ws-field"><span>SEO description</span><textarea name="seoDescription" data-ws-field maxlength="600" rows="3" placeholder=""></textarea></label>
+    </form>
+   </div>
+   <div>
+    <div class="ws-toolbar">
+     <div class="ws-toolbar-left"><i class="ws-dot" aria-hidden="true"></i><b>Live preview</b></div>
+     <div class="ws-devices" role="group" aria-label="Live preview">
+      <button class="ws-view" type="button" data-ws-device="desktop" aria-pressed="true">Desktop</button>
+      <button class="ws-view" type="button" data-ws-device="mobile" aria-pressed="false">Mobile</button>
+     </div>
+    </div>
+    <div class="ws-preview">
+     <div class="ws-frame" id="ws-frame-shell" data-device="desktop">
+      <div class="ws-browser" aria-hidden="true"><i></i><i></i><i></i><span id="ws-site-label">Your website</span></div>
+      <iframe id="ws-preview-frame" sandbox="" title="Live preview" referrerpolicy="no-referrer"></iframe>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="ws-actions">
+   <button class="ws-action primary" type="button" id="ws-export-html">Download HTML website ↗</button>
+   <button class="ws-action" type="button" id="ws-export-json">Save JSON draft</button>
+   <button class="ws-action" type="button" id="ws-reset">Reset</button>
+   <p class="ws-status" role="status" aria-live="polite" id="ws-status">Local draft · not published</p>
+  </div>
+  <p class="ws-disclaimer">Editing, previewing and downloads are functional. <strong>Drafts stay in this browser only</strong>; publishing, domains, contact forms and account sync are not yet available. The downloaded HTML is a standalone static website.</p>
+  <noscript><p class="ws-noscript">Enable JavaScript to use the editor.</p></noscript>
+ </div>
+</section>
+<div class="p-divider-band"><span>ONE BUSINESS. THE RIGHT TOOLS.</span><span>WEB SERVICES / DIGITAL PRESENCE</span><span>© 2026</span></div>
  <section class="p-section" aria-labelledby="capabilities">
   <div class="p-section-inner">
    <p class="p-eyebrow">WHAT IT COULD DO</p>
