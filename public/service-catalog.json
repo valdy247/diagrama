@@ -14,7 +14,7 @@
       "name": "Smart Call",
       "group": "communication",
       "publicPath": "/smart-call/",
-      "workspacePath": "/workspace/?service=smart-call",
+      "workspacePath": "/workspace/smart-call/",
       "state": "pilot-separate",
       "mobile": {
         "surface": "calls",

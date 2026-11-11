@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="theme-color" content="#f6faf8">
+ <meta name="robots" content="noindex,nofollow">
+ <meta name="description" content="Centro privado de control de llamadas, idiomas, asistente y actividad de Smart Call.">
+ <title>Smart Call — VMV Business</title>
+ <link rel="stylesheet" href="/src/smart-call-control.css">
+ <script type="module" src="/src/smart-call-control.js"></script>
+</head>
+<body>
+ <a class="skip-link" href="#content">Ir al contenido</a>
+ <header class="topbar">
+   <a class="brand" href="/es/" aria-label="VMV Business">VMV<span>BUSINESS</span></a>
+   <div class="top-actions"><a href="/es/planes/" class="language-link">Ver planes</a><a href="/workspace/smart-call/" class="language-link">EN</a><a class="back-link" href="/es/workspace/">Todos los servicios <span aria-hidden="true">↗</span></a></div>
+ </header>
+ <div class="layout">
+  <aside class="sidebar" aria-label="Navegación del servicio">
+   <div class="sidebar-head"><div class="service-icon" aria-hidden="true">☎</div><div><span class="micro">VMV / COMUNICACIÓN</span><strong>Smart Call</strong></div></div>
+   <p class="sidebar-label">ESPACIO DE TRABAJO</p>
+   <nav>
+    <a href="#overview" class="nav-item is-current" data-section="overview"><span>◫</span>Resumen</a>
+    <a href="#settings" class="nav-item" data-section="settings"><span>⚙</span>Configuración</a>
+    <a href="#activity" class="nav-item" data-section="activity"><span>◷</span>Actividad</a>
+   </nav>
+   <div class="sidebar-footer"><span class="dot"></span><span>Datos protegidos por tu cuenta</span></div>
+  </aside>
+  <main id="content" class="main" tabindex="-1">
+   <div class="eyebrow"><span class="signal"></span>VMV BUSINESS / PRODUCTO SMART CALL<span class="eyebrow-right">01 — 03</span></div>
+   <div class="heading">
+    <div><p class="micro">TU CENTRO DE COMUNICACIÓN</p>
+    <h1>Llamadas bajo<br><em>tu control.</em></h1>
+    <p class="lead">Configura lo importante, revisa tus llamadas y administra la experiencia de cada cliente desde un solo lugar.</p></div>
+    <div class="hero-mark" aria-hidden="true">↗</div>
+   </div>
+   <section id="auth-state" class="auth-shell" aria-live="polite">
+    <div id="loading" class="state-loading">Verificando tu sesión segura…</div>
+    <form id="login-form" class="login-card" hidden>
+     <div class="login-icon" aria-hidden="true">↳</div>
+     <p class="micro">ACCESO SEGURO</p>
+     <h2>Tu cuenta, tu negocio.</h2>
+     <p>Entra con la misma cuenta que utilizas en VMV Call. No crearemos otro usuario.</p>
+     <label for="email">Correo electrónico</label><input type="email" id="email" autocomplete="email" inputmode="email" required maxlength="254" placeholder="tu@empresa.com">
+     <label for="password">Contraseña</label><input type="password" id="password" autocomplete="current-password" required minlength="6" placeholder="••••••••">
+     <button id="login-button" class="primary" type="submit">Acceder a Smart Call <span aria-hidden="true">↗</span></button>
+     <p class="micro soft">Solo cuentas existentes. Sesión protegida con Supabase.</p>
+    </form>
+   </section>
+   <div id="dashboard" hidden>
+    <div class="userbar"><span id="user-name">Mi cuenta</span><span class="user-email" id="user-email"></span><button id="refresh" type="button" class="quiet">Actualizar ↻</button><button id="logout" type="button" class="quiet">Cerrar sesión</button></div>
+    <section id="overview" class="panel-section" aria-labelledby="overview-heading">
+     <div class="section-head"><div><p class="micro">01 / TU SERVICIO</p><h2 id="overview-heading">Estado general.</h2></div><span id="account-status" class="status-pill">Consultando cuenta</span></div>
+     <div class="overview-grid">
+      <div class="line-feature"><span class="feature-kicker">NÚMERO DE NEGOCIO</span><strong id="line-number">—</strong><span id="line-note">Comprobando línea</span><div class="line-bottom"><span>◉ &nbsp; SMART CALL</span><span>VMV / 01</span></div></div>
+      <div class="metric"><span>PLAN</span><strong id="plan">—</strong><small id="plan-note">—</small></div>
+      <div class="metric"><span>MINUTOS PARA TRADUCIR LLAMADAS (EST.)</span><strong id="minutes">—</strong><small>Solo llamadas con traducción. El saldo puede variar por reservas; consulta la app para el saldo exacto.</small></div>
+      <div class="metric"><span>LLAMADAS REGISTRADAS</span><strong id="calls-count">—</strong><small>Historial de la cuenta</small></div>
+     </div>
+     <div class="insight"><span class="insight-icon">i</span><p>Una línea configurada no significa que las llamadas entrantes estén verificadas. Realiza una llamada de prueba antes de desviar tu número.</p></div>
+    </section>
+    <section id="settings" class="panel-section" aria-labelledby="settings-heading">
+     <div class="section-head"><div><p class="micro">02 / PREFERENCIAS</p><h2 id="settings-heading">Ajustes esenciales.</h2></div><span class="section-aside">Sin salir de VMV</span></div>
+     <div class="settings-grid">
+      <form id="basic-form" class="form-card">
+       <div class="form-heading"><span class="round-icon">◎</span><div><h3>Idiomas y asistente</h3><p>Configuración básica de tu cuenta.</p></div></div>
+       <label for="owner-language">Tu idioma</label>
+       <select id="owner-language" required><option value="es">Español</option><option value="en">English</option></select>
+       <label for="caller-language">Idioma del cliente</label>
+       <select id="caller-language" required><option value="en">English</option><option value="es">Español</option></select>
+       <label for="assistant-name">Nombre del asistente</label>
+       <input id="assistant-name" maxlength="40" required placeholder="Nombre del asistente">
+       <p class="form-note">Guardar no cambia el desvío, el número ni una ruta telefónica activa. Esos cambios necesitan verificación.</p>
+       <button id="basic-save" class="primary" type="submit">Guardar preferencias <span aria-hidden="true">↗</span></button>
+       <p id="basic-feedback" class="feedback" role="status"></p>
+      </form>
+      <form id="premium-form" class="form-card">
+       <div class="form-heading"><span class="round-icon">◈</span><div><h3>Voces y saludos</h3><p id="premium-hint">Requiere Pro o Premium activo.</p></div></div>
+       <fieldset id="premium-fields" disabled>
+        <label for="voice-customer">Voz para el cliente</label>
+        <select id="voice-customer"><option value="default">Estándar</option><option value="bright">Clara</option><option value="calm">Serena</option></select>
+        <label for="voice-owner">Tu voz de interpretación</label>
+        <select id="voice-owner"><option value="default">Estándar</option><option value="bright">Clara</option><option value="calm">Serena</option></select>
+        <label for="greeting-customer">Saludo al cliente</label>
+        <textarea id="greeting-customer" rows="3" maxlength="180" placeholder="Gracias por llamar…"></textarea>
+        <label for="greeting-owner">Saludo para ti</label>
+        <textarea id="greeting-owner" rows="3" maxlength="180" placeholder="Tienes una llamada entrante…"></textarea>
+       </fieldset>
+       <p class="form-note">Cada saludo admite hasta 180 caracteres. Los cambios afectan a llamadas futuras.</p>
+       <button id="premium-save" class="primary" type="submit" disabled>Guardar personalización <span aria-hidden="true">↗</span></button>
+       <p id="premium-feedback" class="feedback" role="status"></p>
+      </form>
+     </div>
+    </section>
+    <section id="activity" class="panel-section" aria-labelledby="activity-heading">
+     <div class="section-head"><div><p class="micro">03 / ACTIVIDAD</p><h2 id="activity-heading">Llamadas recientes.</h2></div><span class="section-aside">ÚLTIMAS 25</span></div>
+     <div class="activity-wrap"><div class="activity-header"><span>FECHA</span><span>TIPO</span><span>ESTADO</span><span>DURACIÓN</span></div><div id="activity-list" class="activity-list"></div></div>
+    </section>
+    <div class="workspace-foot">Los datos se consultan con tu cuenta y sus permisos. La web y el iPhone mantienen sesiones independientes.</div>
+   </div>
+   <div id="global-feedback" class="global-feedback" role="status" aria-live="polite"></div>
+  </main>
+ </div>
+ <footer class="footer"><span>© 2026 VMV Business</span><span>SMART CALL / CONTROL CENTER</span></footer>
+</body></html>
