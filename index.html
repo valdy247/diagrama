@@ -52,8 +52,9 @@
     .eyebrow { align-self: flex-end; margin: 0 0 9px; color: var(--quiet); text-align: right; max-width: 210px; }
     .period { letter-spacing: -.09em; }
 
-    /* Only the middle third is a 3D rotating slice.
-       The top and bottom third never move. */
+    /* The middle third rolls vertically UP: the visible word recedes toward
+       the top edge, while the next word rises into view from the bottom.
+       The first and last thirds remain motionless. */
     .band {
       position: relative; min-height: 0; border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
@@ -67,7 +68,7 @@
       will-change: transform;
     }
     .rotor.is-flipping {
-      transform: translateZ(calc(-1 * var(--face-half))) rotateX(-90deg);
+      transform: translateZ(calc(-1 * var(--face-half))) rotateX(90deg);
     }
     .rotor.no-transition { transition: none !important; }
     .face {
@@ -78,7 +79,7 @@
       overflow: hidden; transform-style: preserve-3d;
     }
     .face--front { transform: rotateX(0deg) translateZ(var(--face-half)); }
-    .face--next { transform: rotateX(90deg) translateZ(var(--face-half)); }
+    .face--next { transform: rotateX(-90deg) translateZ(var(--face-half)); }
     .word {
       display: block; width: 100%; text-align: center; white-space: nowrap;
       font-size: var(--word-size, 17vw);
