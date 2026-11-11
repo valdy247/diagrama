@@ -28,6 +28,7 @@ const setText = (id, value) => {
 function clearSensitiveData() {
   ["w-account-name","w-account-email","w-account-business","w-account-line","w-account-plan","w-account-calls","w-account-language"]
     .forEach(id=>setText(id,"—"));
+  document.getElementById("w-calls-list")?.replaceChildren();
 }
 
 async function readOwnAccount(user, revision) {
@@ -42,12 +43,15 @@ async function readOwnAccount(user, revision) {
   // owner-only existing tables. Select only the fields needed for a summary.
   const calls = supabase.from("smartjob_call_sessions")
     .select("bridge_sid",{count:"exact",head:true}).eq("owner_id",user.id);
-  const [profile, phone, plan, callSettings, history] = await Promise.all([
+  const [profile, phone, plan, callSettings, history, recent] = await Promise.all([
     supabase.from("smartjob_profiles").select("id,first_name,business_name,account_type").eq("id",user.id).maybeSingle(),
     supabase.from("smartjob_phone_routes").select("id,enabled,twilio_number,public_number").eq("user_id",user.id).order("created_at",{ascending:false}).limit(1),
     supabase.from("smartjob_billing_accounts").select("plan_code,status").eq("user_id",user.id).maybeSingle(),
     supabase.from("smartjob_call_settings").select("desired_language,caller_language").eq("user_id",user.id).maybeSingle(),
-    calls
+    calls,
+    supabase.from("smartjob_call_sessions")
+      .select("started_at,status,duration_seconds,call_mode")
+      .eq("owner_id",user.id).order("started_at",{ascending:false}).limit(5)
   ]);
 
   if(revision!==generation) return;
@@ -64,6 +68,35 @@ async function readOwnAccount(user, revision) {
   const owner=callSettings.data?.desired_language;
   const caller=callSettings.data?.caller_language;
   setText("w-account-language",callSettings.error?"No disponible":owner&&caller?owner.toUpperCase()+" ↔ "+caller.toUpperCase():"Sin configurar");
+  const list=document.getElementById("w-calls-list");
+  if(list) {
+    const records=Array.isArray(recent.data)?recent.data:[];
+    const fragment=document.createDocumentFragment();
+    if(recent.error || !records.length) {
+      const empty=document.createElement("p");
+      empty.textContent=recent.error
+        ? "No se pudo consultar el historial."
+        : "No hay llamadas registradas en esta cuenta.";
+      fragment.append(empty);
+    }else{
+      for(const call of records) {
+        const item=document.createElement("div");
+        item.className="w-recent-item";
+        const date=document.createElement("strong");
+        const parsed=call.started_at?new Date(call.started_at):null;
+        date.textContent=parsed&&Number.isFinite(parsed.getTime())
+          ?parsed.toLocaleString(undefined,{dateStyle:"medium",timeStyle:"short"})
+          :"Fecha no disponible";
+        const details=document.createElement("span");
+        const minutes=typeof call.duration_seconds==="number"
+          ?Math.ceil(Math.max(0,call.duration_seconds)/60)+" min":"—";
+        details.textContent=(call.status||"Sin estado")+" · "+minutes;
+        item.append(date,details);
+        fragment.append(item);
+      }
+    }
+    list.replaceChildren(fragment);
+  }
   info.textContent = profile.error || phone.error || plan.error || callSettings.error || history.error
     ? "Algunos datos no están disponibles. La información mostrada procede de tu propia cuenta."
     : "Datos leídos directamente de tu cuenta con permisos de Supabase.";
