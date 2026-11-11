@@ -164,11 +164,11 @@ function start() {
     camera.position.set(0, 0, CAMERA_Z);
     camera.lookAt(0, 0, 0);
     // Physically oriented lights: the two adjacent faces receive different brightness.
-    scene.add(new THREE.AmbientLight(0xffffff, 1.28));
-    const key = new THREE.DirectionalLight(0xffffff, 1.05);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.45));
+    const key = new THREE.DirectionalLight(0xffffff, 0.74);
     key.position.set(-8, 9, 13);
     scene.add(key);
-    const fill = new THREE.DirectionalLight(0xffffff, 0.11);
+    const fill = new THREE.DirectionalLight(0xffffff, 0.10);
     fill.position.set(13, 3, -5);
     scene.add(fill);
 
@@ -193,7 +193,7 @@ function start() {
         renderer.render(scene, camera);
       }
     });
-    if (!reducedMotion.matches) interval = window.setInterval(turn, PERIOD_MS);
+    interval = window.setInterval(turn, PERIOD_MS);
   } catch (error) {
     slice.classList.remove("has-webgl");
     console.error("VMV 3D hero could not initialize", error);
