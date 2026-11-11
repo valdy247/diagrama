@@ -95,7 +95,7 @@ async function loadAccount(user,attempt){
  $("basic-save").disabled=!settingsExist;
  if(settingsExist){
   $("owner-language").value=["en","es"].includes(settings.data.desired_language)?settings.data.desired_language:"es";
-  $("caller-language").value=["en","es"].includes(settings.data.caller_language)?settings.data.caller_language:"en";
+  $("caller-language").value=["en","es"].includes(settings.data.caller_language)&&settings.data.caller_language!==$("owner-language").value?settings.data.caller_language:($("owner-language").value==="es"?"en":"es");
   $("assistant-name").value=String(settings.data.assistant_name||"");
  }else{
   feedback("basic-feedback",t("Completa primero la activación de tu línea para editar preferencias.","Complete line activation before editing preferences."),true);
@@ -165,6 +165,13 @@ $("logout")?.addEventListener("click",async()=>{
  show($("dashboard"),false);show($("login-form"),true);show($("loading"),false);
 });
 $("refresh")?.addEventListener("click",()=>void refresh());
+// Keep the bilingual pair valid before the user presses Save.
+$("owner-language")?.addEventListener("change",()=>{
+ $("caller-language").value=$("owner-language").value==="es"?"en":"es";
+});
+$("caller-language")?.addEventListener("change",()=>{
+ $("owner-language").value=$("caller-language").value==="es"?"en":"es";
+});
 $("basic-form")?.addEventListener("submit",async event=>{
  event.preventDefault();if(!supabase||!ownerId||!settingsExist)return;
  const owner=$("owner-language").value,caller=$("caller-language").value,assistant=$("assistant-name").value.trim();
