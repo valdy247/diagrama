@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 Disallow: /workspace/
+Disallow: /es/workspace/
 Sitemap: https://vmv-business-design.vercel.app/sitemap.xml
