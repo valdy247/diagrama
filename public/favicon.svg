@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-label="VMV Business">
+<rect width="64" height="64" rx="12" fill="#141414"/>
+<path d="M8 20l11 25 11-25h-7l-4 14-4-14zm21 0l10 25 10-25h-7l-3 14-3-14z" fill="#fff"/>
+<path d="M52 20v25" stroke="#fff" stroke-width="4"/>
+</svg>
