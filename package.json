@@ -1,6 +1,6 @@
 {
   "name": "vmv-business-design",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "6.3.5"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.80.0"
   }
 }
