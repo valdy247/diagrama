@@ -15,7 +15,7 @@
       --line: #1b1b1b;
       --gutter: clamp(22px, 4vw, 76px);
       --face-half: 150px;
-      --flip-time: 790ms;
+      --flip-time: 1120ms;
     }
     *, *::before, *::after { box-sizing: border-box; }
     html { background: var(--paper); }
@@ -52,34 +52,50 @@
     .eyebrow { align-self: flex-end; margin: 0 0 9px; color: var(--quiet); text-align: right; max-width: 210px; }
     .period { letter-spacing: -.09em; }
 
-    /* Only the middle third rotates horizontally, around a VERTICAL Y axis,
-       as the center slice of a Rubik's cube. The face moves toward the
-       left while its next face appears from the right. Top/bottom stay still. */
+    /* Center third rotates on the Y axis with two adjacent faces and one
+       pronounced corner. The upper and lower panels never move. */
     .band {
       position: relative; min-height: 0; border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      perspective: 1500px; overflow: hidden; background: var(--paper);
+      perspective: clamp(1400px, 300vw, 6000px); overflow: hidden; background: #f0f0f0;
     }
     .rotor {
       position: absolute; inset: 0; width: 100%; height: 100%;
       transform-style: preserve-3d;
       transform: translateZ(calc(-1 * var(--face-half))) rotateY(0deg);
-      transition: transform var(--flip-time) cubic-bezier(.67,.04,.26,.98);
       will-change: transform;
+      transform-origin: center center;
     }
-    .rotor.is-flipping {
-      transform: translateZ(calc(-1 * var(--face-half))) rotateY(-90deg);
+    /* Slow briefly near 50 degrees so both visible faces and their
+       shared vertical corner resemble the provided cube screenshot. */
+    .rotor.is-flipping { animation: vmv-slice-turn var(--flip-time) linear both; }
+    @keyframes vmv-slice-turn {
+      0%   { transform: translateZ(calc(-1 * var(--face-half))) rotateY(0deg); }
+      32%  { transform: translateZ(calc(-1 * var(--face-half))) rotateY(-42deg); }
+      68%  { transform: translateZ(calc(-1 * var(--face-half))) rotateY(-56deg); }
+      100% { transform: translateZ(calc(-1 * var(--face-half))) rotateY(-90deg); }
     }
-    .rotor.no-transition { transition: none !important; }
+    .rotor.no-transition { animation: none !important; transition: none !important; }
     .face {
       position: absolute; inset: 0; background: var(--paper);
       backface-visibility: hidden; -webkit-backface-visibility: hidden;
       display: flex; justify-content: center; align-items: center;
-      padding-inline: var(--gutter);
-      overflow: hidden; transform-style: preserve-3d;
+      padding-inline: var(--gutter); overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.2);
     }
+    .face::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      opacity: 0; transition: opacity 180ms ease;
+    }
+    .band.is-active .face::after { opacity: 1; }
     .face--front { transform: rotateY(0deg) translateZ(var(--face-half)); }
+    .face--front::after {
+      background: linear-gradient(90deg, transparent 35%, rgba(0,0,0,.20) 100%);
+    }
     .face--next { transform: rotateY(90deg) translateZ(var(--face-half)); }
+    .face--next::after {
+      background: linear-gradient(90deg, rgba(0,0,0,.27) 0%, rgba(0,0,0,.08) 55%, transparent 100%);
+    }
     .word {
       display: block; width: 100%; text-align: center; white-space: nowrap;
       font-size: var(--word-size, 17vw);
@@ -93,20 +109,22 @@
     }
     .band::before { top: -1px; }
     .band::after { bottom: -1px; }
-    .band-label {
-      position: absolute; z-index: 3; pointer-events: none;
-      left: var(--gutter); top: clamp(12px, 1.5vw, 22px); color: var(--quiet);
+    /* The small labels rotate together with their 3D faces. */
+    .face-meta {
+      position: absolute; z-index: 2; pointer-events: none;
+      color: var(--quiet); font-size: clamp(9px,.75vw,12px);
+      line-height: 1.4; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase;
     }
-    .band-number {
-      position: absolute; z-index: 3; pointer-events: none;
+    .face-meta--top { left: var(--gutter); top: clamp(12px, 1.5vw, 22px); }
+    .face-meta--bottom {
       right: var(--gutter); bottom: clamp(12px, 1.5vw, 22px);
-      color: var(--quiet); font-size: clamp(10px,.8vw,12px);
-      font-weight: 700; letter-spacing: .14em;
     }
     .band-shadow {
       opacity: 0; pointer-events: none; position: absolute; inset: 0; z-index: 2;
-      box-shadow: inset 0 24px 35px -26px #0005, inset 0 -26px 35px -28px #0004;
-      transition: opacity 200ms;
+      box-shadow: inset 0 21px 28px -24px rgba(0,0,0,.26),
+                  inset 0 -21px 28px -24px rgba(0,0,0,.26);
+      transition: opacity 160ms ease;
     }
     .band.is-active .band-shadow { opacity: 1; }
     .panel--bottom {
@@ -151,7 +169,7 @@
       .bottom-copy h2 { font-size: min(7vw, 14vh); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .rotor, .band-shadow { transition: none !important; }
+      .rotor, .band-shadow, .face::after { transition: none !important; animation: none !important; }
       .rotor { will-change: auto; }
     }
   </style>
@@ -173,13 +191,19 @@
 
     <!-- Middle third: rotates as one complete horizontal slice -->
     <section class="band" aria-label="Our values">
-      <span class="band-label" aria-hidden="true">01 / WHAT DRIVES US</span>
       <div class="rotor" id="rotor" aria-hidden="true">
-        <div class="face face--front"><span class="word" id="current-word">POWER</span></div>
-        <div class="face face--next"><span class="word" id="next-word">VISION</span></div>
+        <div class="face face--front">
+          <span class="face-meta face-meta--top">01 / WHAT DRIVES US</span>
+          <span class="word" id="current-word">POWER</span>
+          <span class="face-meta face-meta--bottom" id="word-counter">01 — 08</span>
+        </div>
+        <div class="face face--next">
+          <span class="face-meta face-meta--top">01 / WHAT DRIVES US</span>
+          <span class="word" id="next-word">VISION</span>
+          <span class="face-meta face-meta--bottom" id="next-counter">02 — 08</span>
+        </div>
       </div>
       <div class="band-shadow" aria-hidden="true"></div>
-      <span class="band-number" aria-hidden="true" id="word-counter">01 — 08</span>
       <span class="sr-only" id="accessible-word">POWER</span>
     </section>
 
@@ -209,6 +233,7 @@
       const current = document.getElementById("current-word");
       const next = document.getElementById("next-word");
       const count = document.getElementById("word-counter");
+      const nextCount = document.getElementById("next-counter");
       const accessible = document.getElementById("accessible-word");
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
       let position = 0;
@@ -229,6 +254,7 @@
         placeWord(current, words[position]);
         placeWord(next, words[(position + 1) % words.length]);
         count.textContent = String(position + 1).padStart(2, "0") + " — " + String(words.length).padStart(2, "0");
+        nextCount.textContent = String(((position + 1) % words.length) + 1).padStart(2, "0") + " — " + String(words.length).padStart(2, "0");
         accessible.textContent = words[position];
       }
       function finishTurn() {
@@ -246,8 +272,8 @@
           });
         });
       }
-      rotor.addEventListener("transitionend", (event) => {
-        if (event.target === rotor && event.propertyName === "transform") finishTurn();
+      rotor.addEventListener("animationend", (event) => {
+        if (event.target === rotor && event.animationName === "vmv-slice-turn") finishTurn();
       });
       function flip() {
         if (turning || document.hidden || reducedMotion.matches) return;
@@ -275,7 +301,7 @@
       document.addEventListener("visibilitychange", () => {
         if (!document.hidden && !turning) fitDepth();
       });
-      // Remain static for 1.21 s then rotate for 0.79 s: 2 s total.
+      // A 1.12s horizontal 3D rotation every 2s, pausing visually around the shared corner.
       if (!started) {
         started = true;
         window.setInterval(flip, 2000);
