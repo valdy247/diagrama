@@ -11,6 +11,7 @@ const pages = [
   "business-operations",
   "marketing-analytics",
   "automations",
+  "workspace",
 ];
 
 export default defineConfig({
