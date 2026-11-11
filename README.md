@@ -39,3 +39,13 @@ This is a **public-facing UI/UX concept**, not a live business-management platfo
     npm run build
 
 Vercel serves the output in `dist/` from the `main` branch. Every product page is included in Vite's static multi-page build.
+
+## Design and integration preparation — 2026-11-11
+
+- Unique illustrated mockup for all nine product detail pages: phone interface, AI flow, site preview, inventory, calendar, CRM pipeline, operations, analytics and workflow builder.
+- Home navigation now includes a product-category mega-menu, mobile drawer, clear explore CTA, subtle scroll animation, accessible keyboard skip link and monochrome favicon.
+- English and Spanish marketing pages are available at / and /es/, plus nine localized product detail routes under /es/.
+- All pages have matching canonical and localized alternates; robots.txt and sitemap.xml expose twenty public marketing pages while excluding /workspace/ from indexing.
+- Workspace concept at /workspace/ uses /service-catalog.json for the same nine module IDs, and demonstrates app-vs-web roles without touching real accounts or data.
+- docs/app-web-integration.md records the verified existing shared Supabase project, intended tenancy/permission rules, deep-link contract and staged integration plan.
+- **No live Supabase, Twilio, AI, payments, production login or real customer data is accessed by this marketing website.** Shared project authentication will be implemented only after auditing existing Supabase row-level security and app sessions during phase 2.
