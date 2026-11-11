@@ -1,232 +1,248 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#ffffff">
-  <meta name="description" content="VMV Business — a new standard for modern businesses.">
-  <title>VMV Business — Built On What Matters</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#ededed">
+  <meta name="description" content="VMV Business. Calls, AI agents, websites and business tools, beautifully connected.">
+  <title>VMV Business — Everything, connected.</title>
   <style>
-    :root {
-      color-scheme: light;
-      --white: #ffffff;
-      --black: #0b0b0b;
-      --gray: #767676;
-      --gutter: clamp(20px, 3.75vw, 70px);
+    :root{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#141414;background:#ededed;font-synthesis:none;-webkit-font-smoothing:antialiased}
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-width:320px}
+    .stage{min-height:100svh;padding:clamp(14px,3.7vw,58px);display:grid;place-items:center;overflow:hidden;position:relative}
+    .stage::before,.stage::after{content:"";position:absolute;z-index:0;width:88px;height:55px;background-image:radial-gradient(#b8b8b8 1px,transparent 1.5px);background-size:14px 14px;opacity:.75}
+    .stage::before{right:14%;top:2%}
+    .stage::after{left:12%;bottom:3%}
+    .site{z-index:1;width:min(100%,1510px);min-height:min(790px,calc(100svh - 100px));background:white;box-shadow:0 32px 80px rgba(0,0,0,.075);display:flex;flex-direction:column;overflow:hidden}
+    .header{height:91px;flex:0 0 auto;padding:0 clamp(30px,4.7vw,79px);display:grid;grid-template-columns:1fr 2fr 1fr;align-items:center;gap:22px}
+    .brand{display:inline-flex;gap:5px;align-items:baseline;font-weight:800;font-size:29px;letter-spacing:-2.1px;line-height:1}
+    .brand small{font-size:8px;letter-spacing:1.7px;font-weight:700;transform:translateY(-2px)}
+    .nav{display:flex;gap:clamp(15px,2.45vw,39px);justify-content:center;align-items:center}
+    .nav span{font-size:11px;white-space:nowrap;color:#aaa;letter-spacing:-.05px}
+    .nav .selected{color:#161616;font-weight:600}
+    .social{display:flex;align-items:center;justify-content:flex-end;gap:18px;color:#858585}
+    .social svg{display:block;width:14px;height:14px}
+    .social .grid-icon{stroke:#202020}
+    .hero{flex:1;min-height:510px;display:grid;grid-template-columns:44% 56%;align-items:center;position:relative;padding:12px clamp(30px,4.7vw,79px) 44px}
+    .copy{align-self:center;position:relative;z-index:2;max-width:520px;padding:8px 0 42px}
+    .eyebrow{font-size:10px;letter-spacing:3px;color:#888;font-weight:600;margin:0 0 31px;text-transform:uppercase}
+    h1{font-size:clamp(46px,4.65vw,82px);font-weight:400;letter-spacing:-3.9px;line-height:1.065;margin:0;max-width:560px}
+    .description{font-size:14px;color:#909090;line-height:1.78;margin:27px 0 26px;max-width:375px;font-weight:400}
+    .specialties{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:#aaa}
+    .specialties span{position:relative}
+    .specialties span+span::before{content:"";height:3px;width:3px;border-radius:50%;background:#bbb;display:inline-block;margin:0 11px 3px 0}
+    .specialties .focus{color:#222;text-decoration:underline;text-underline-offset:5px}
+    .visual{width:100%;align-self:center;justify-self:center;max-width:775px;min-width:0;position:relative;overflow:visible;transform:translate(-1%,3%)}
+    .visual svg{display:block;width:100%;height:auto;overflow:visible}
+    .visual .line{fill:none;stroke:#151515;stroke-width:1.75;stroke-linejoin:round;stroke-linecap:round}
+    .visual .thin{fill:none;stroke:#151515;stroke-width:1.05;stroke-linecap:round;stroke-linejoin:round}
+    .visual .faint{fill:none;stroke:#a6a6a6;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+    .visual .solid{fill:#151515}
+    .visual .paper{fill:#fff}
+    .visual .shade{fill:#f3f3f3}
+    .visual .micro{font:700 9px Arial,sans-serif;letter-spacing:1.5px;fill:#171717}
+    .visual .tiny{font:600 8px Arial,sans-serif;letter-spacing:.3px;fill:#161616}
+    .visual .quiet{fill:#a9a9a9}
+    .visual .float-a{animation:bob 7s ease-in-out infinite}
+    .visual .float-b{animation:bob 9s ease-in-out -3s infinite}
+    .visual .float-c{animation:bob 8s ease-in-out -5s infinite}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+    .footer{height:106px;display:grid;grid-template-columns:41% 59%;align-items:stretch;margin-top:auto;flex:0 0 auto}
+    .footer-left{display:flex;align-items:flex-end;justify-content:space-between;gap:25px;padding:0 24px 24px clamp(30px,4.7vw,79px)}
+    .copyright{font-size:10px;color:#b4b4b4;white-space:nowrap}
+    .scroll-cue{display:flex;align-items:center;gap:10px;color:#202020;font-size:10px;white-space:nowrap}
+    .scroll-wheel{border:1.4px solid #1d1d1d;width:15px;height:24px;border-radius:11px;position:relative}
+    .scroll-wheel::after{content:"";position:absolute;width:2px;height:6px;border-radius:5px;background:#171717;top:4px;left:5.3px}
+    .footer-right{background:#121212;color:#fff;display:grid;grid-template-columns:repeat(4,1fr);align-items:center;gap:12px;padding:15px clamp(21px,3.3vw,57px)}
+    .footer-right .service{color:#fff;text-align:center;font-weight:700;font-size:clamp(11px,1.1vw,17px);letter-spacing:-.6px;white-space:nowrap}
+    .footer-right .service small{display:block;font-size:8px;font-weight:400;letter-spacing:1.5px;color:#969696;margin-top:6px}
+    .visual .bracket{stroke:#151515;stroke-width:1.5;fill:none}
+    @media (max-width:1000px){
+      .header{grid-template-columns:1fr auto}
+      .nav{display:none}
+      .hero{grid-template-columns:45% 55%}
+      h1{font-size:clamp(43px,5.2vw,65px);letter-spacing:-2.9px}
+      .description{font-size:13px}
+      .footer{grid-template-columns:37% 63%}
+      .footer-right{padding-inline:15px}
     }
-    * { box-sizing: border-box; }
-    html { background: var(--white); }
-    body {
-      margin: 0;
-      background: var(--white);
-      color: var(--black);
-      font-family: Arial, Helvetica, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
+    @media (max-width:700px){
+      .stage{padding:12px;display:block}
+      .stage::before,.stage::after{display:none}
+      .site{min-height:calc(100svh - 24px)}
+      .header{height:76px;padding-inline:25px}
+      .brand{font-size:26px}
+      .hero{display:flex;flex-direction:column;justify-content:flex-start;padding:38px 25px 10px;min-height:unset;gap:4px;align-items:stretch}
+      .copy{padding:0;align-self:stretch;max-width:500px}
+      .eyebrow{font-size:9px;margin-bottom:22px}
+      h1{font-size:clamp(40px,9.2vw,65px);letter-spacing:-2.7px}
+      .description{margin:17px 0 17px;max-width:360px}
+      .visual{width:100%;max-width:550px;transform:none;margin:4px auto 0}
+      .footer{height:auto;display:flex;flex-direction:column}
+      .footer-left{min-height:65px;align-items:center;padding:5px 25px 14px}
+      .footer-right{min-height:86px;padding:15px 20px}
+      .footer-right .service{font-size:clamp(10px,2.9vw,15px)}
+      .footer-right .service small{font-size:7px;letter-spacing:.65px}
     }
-    .hero {
-      height: 100svh;
-      min-height: 570px;
-      width: 100%;
-      display: grid;
-      grid-template-rows: repeat(3, minmax(0, 1fr));
-      overflow: hidden;
+    @media (max-width:420px){
+      .social{gap:13px}
+      .social svg{width:13px;height:13px}
+      .hero{padding-top:24px}
+      .eyebrow{margin-bottom:20px}
+      h1{font-size:clamp(37px,10vw,47px)}
+      .description{font-size:12px;line-height:1.6}
+      .specialties{font-size:10px;gap:5px}
+      .footer-right{gap:5px;padding-inline:10px}
+      .footer-right .service{font-size:9px}
     }
-    .section {
-      position: relative;
-      min-width: 0;
-      overflow: hidden;
-      padding-inline: var(--gutter);
-    }
-    .top {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-top: clamp(20px, 2.7vw, 40px);
-      padding-bottom: clamp(16px, 1.9vw, 28px);
-    }
-    .masthead, .bottom-bar {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    .logo {
-      line-height: .85;
-      font-size: clamp(28px, 2.75vw, 42px);
-      font-weight: 900;
-      letter-spacing: -.08em;
-    }
-    .logo sup {
-      font-size: .31em;
-      letter-spacing: -.02em;
-      vertical-align: top;
-      margin-left: 7px;
-    }
-    .micro {
-      font-weight: 700;
-      font-size: clamp(9px, .74vw, 12px);
-      line-height: 1.45;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-    .micro--center { text-align: center; }
-    .micro--right { text-align: right; }
-    .top-headline {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 20px;
-    }
-    h1, h2 {
-      margin: 0;
-      text-transform: uppercase;
-      letter-spacing: -.085em;
-      font-weight: 900;
-    }
-    h1 {
-      font-size: clamp(65px, 11.2vw, 215px);
-      line-height: .81;
-      white-space: nowrap;
-    }
-    .sidenote {
-      max-width: 240px;
-      color: var(--gray);
-      text-align: right;
-      margin: 0 0 8px;
-    }
-    /* A single real WebGL mesh fills only the middle third of the hero.
-       Upper and lower thirds remain immobile; thin rules mark the boundaries. */
-    .cube-slice {
-      position: relative;
-      min-width: 0;
-      min-height: 0;
-      background: var(--white);
-      overflow: hidden;
-      border-top: 1px solid var(--black);
-      border-bottom: 1px solid var(--black);
-      isolation: isolate;
-    }
-    #cube-stage {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    #cube-stage canvas {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-    #cube-fallback {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 7vw;
-      font-weight: 900;
-      font-size: clamp(60px, 13vw, 225px);
-      letter-spacing: -.085em;
-      white-space: nowrap;
-      transition: opacity 160ms ease;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .cube-slice.has-webgl #cube-fallback { opacity: 0; }
-    .bottom {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding-top: clamp(22px, 2.8vw, 43px);
-      padding-bottom: clamp(18px, 2.8vw, 42px);
-    }
-    .bottom-body {
-      display: flex;
-      justify-content: space-between;
-      gap: 25px;
-      align-items: flex-start;
-    }
-    h2 {
-      font-size: clamp(50px, 7.6vw, 150px);
-      line-height: .87;
-      white-space: nowrap;
-    }
-    .summary {
-      max-width: 280px;
-      margin: 5px 0 0;
-      font-size: clamp(13px, 1.2vw, 18px);
-      line-height: 1.45;
-      letter-spacing: -.01em;
-    }
-    .bottom-bar {
-      color: var(--gray);
-      align-items: flex-end;
-    }
-    .bottom-bar span:first-child { color: var(--black); }
-    .sr-only {
-      position: absolute; width: 1px; height: 1px;
-      padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
-    }
-    @media (max-width: 850px) {
-      .micro--center, .sidenote { display: none; }
-      h1 { font-size: clamp(60px, 13vw, 140px); }
-      h2 { font-size: clamp(51px, 8.8vw, 100px); }
-      .summary { font-size: 12px; max-width: 200px; }
-      .bottom-bar span:nth-child(2) { display: none; }
-    }
-    @media (max-width: 550px) {
-      .hero { min-height: 560px; }
-      .top { padding-top: 24px; }
-      .logo { font-size: 32px; }
-      h1 { font-size: 15.3vw; }
-      .bottom-body { flex-direction: column; gap: 13px; }
-      h2 { font-size: 10.3vw; line-height: .92; }
-      .summary { max-width: 305px; font-size: 12px; line-height: 1.4; }
-      .bottom-bar { font-size: 9px; }
-      #cube-fallback { font-size: 15vw; }
-    }
-    @media (max-width: 350px) {
-      h1 { font-size: 15vw; }
-      h2 { font-size: 10vw; }
-    }
+    @media (prefers-reduced-motion:reduce){.visual .float-a,.visual .float-b,.visual .float-c{animation:none}}
   </style>
-  <script type="module" src="/src/main.js"></script>
 </head>
 <body>
-  <main class="hero" aria-label="VMV Business design concept">
-    <section class="section top" aria-label="VMV brand">
-      <header class="masthead">
-        <div class="logo" aria-label="VMV Business">VMV<sup>®</sup></div>
-        <span class="micro micro--center">THE BUSINESS OPERATING PLATFORM</span>
-        <span class="micro micro--right">BUSINESS<br>EST. 2026</span>
+  <div class="stage">
+    <main class="site" aria-label="VMV Business homepage design concept">
+      <header class="header">
+        <div class="brand" aria-label="VMV Business">vmv<small>BUSINESS</small></div>
+        <nav class="nav" aria-label="Navigation preview">
+          <span class="selected">Home</span><span>Services</span><span>Solutions</span><span>About</span><span>Contact</span>
+        </nav>
+        <div class="social" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 6.2a8 8 0 0 1-2.3.7 4 4 0 0 0 1.8-2.2 8.4 8.4 0 0 1-2.5 1 4 4 0 0 0-7 2.7c0 .3 0 .6.1.9a11.3 11.3 0 0 1-8.2-4.2 4 4 0 0 0 1.2 5.3 4 4 0 0 1-1.8-.5 4 4 0 0 0 3.2 4 4 4 0 0 1-1.8.1 4 4 0 0 0 3.8 2.8 8.1 8.1 0 0 1-5 1.7H1a11.5 11.5 0 0 0 6.2 1.8c7.4 0 11.5-6.2 11.5-11.6v-.5a8.3 8.3 0 0 0 1.7-2.2z"/></svg>
+          <svg class="grid-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 8V5h3m8 0h3v3m0 8v3h-3m-8 0H5v-3M5 12h14M12 5v14"/></svg>
+        </div>
       </header>
-      <div class="top-headline">
-        <h1>BUILT ON.</h1>
-        <p class="micro sidenote">THE NEXT GENERATION OF BUSINESS STARTS HERE.</p>
-      </div>
-    </section>
 
-    <section class="cube-slice" aria-label="Our values in a rotating 3D block">
-      <span class="sr-only">Power, Vision, Discipline, Ambition, Courage, Purpose, Momentum, Growth.</span>
-      <div id="cube-fallback" aria-hidden="true">POWER</div>
-      <div id="cube-stage" aria-hidden="true"></div>
-    </section>
+      <section class="hero" aria-label="Hero">
+        <div class="copy">
+          <p class="eyebrow">The connected business era</p>
+          <h1>Your business.<br>Better connected.</h1>
+          <p class="description">One intelligent platform for calls, AI agents, websites, customers and everything that keeps your business moving.</p>
+          <div class="specialties" aria-label="VMV services">
+            <span>Communication</span><span class="focus">AI &amp; Automation</span><span>Operations</span>
+          </div>
+        </div>
 
-    <section class="section bottom" aria-label="VMV business vision">
-      <div class="bottom-body">
-        <h2>MADE TO<br>MOVE FORWARD.</h2>
-        <p class="summary">Calls, AI, websites and the tools to grow. One platform for the way you do business.</p>
-      </div>
-      <footer class="bottom-bar micro">
-        <span>VMV BUSINESS®</span>
-        <span>ONE PLATFORM. MORE POSSIBILITY.</span>
-        <span>DESIGNED FOR WHAT'S NEXT / 2026</span>
+        <div class="visual" role="img" aria-label="Black-and-white line illustration connecting VMV's phone, AI agent, website, inventory, and calendar tools">
+          <svg viewBox="0 0 680 525" xmlns="http://www.w3.org/2000/svg">
+            <!-- very light layout fragments -->
+            <path class="faint" d="M40 212H100v-36h42M564 193h65v74h-38M480 423v43H300v-21"/>
+            <circle cx="101" cy="212" r="3" class="solid"/><circle cx="628" cy="267" r="3" class="solid"/>
+            <path class="thin" d="M55 389h66v-67h44M492 89V46h72M206 90v-46h54"/>
+            <circle class="paper" cx="55" cy="389" r="5" stroke="#191919" stroke-width="1.3"/>
+            <circle class="paper" cx="260" cy="44" r="5" stroke="#191919" stroke-width="1.3"/>
+            <!-- main browser UI -->
+            <g class="float-a">
+              <rect x="216" y="118" width="285" height="295" fill="#fff" stroke="#151515" stroke-width="2"/>
+              <rect x="216" y="118" width="285" height="31" fill="#f8f8f8" stroke="#151515" stroke-width="1.3"/>
+              <circle cx="233" cy="133" r="3" class="solid"/><circle cx="245" cy="133" r="3" fill="#b0b0b0"/><circle cx="257" cy="133" r="3" fill="#b0b0b0"/>
+              <path class="thin" d="M273 133h130"/>
+              <rect x="230" y="163" width="57" height="12" fill="#151515"/>
+              <text x="258.5" y="172" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" letter-spacing="1">VMV</text>
+              <text class="tiny" x="298" y="173">BUSINESS</text>
+              <path class="thin" d="M230 187h257"/>
+              <text class="micro" x="233" y="210">OVERVIEW</text>
+              <text x="232" y="245" font-family="Arial" font-weight="700" font-size="26" fill="#151515">All in one.</text>
+              <text x="234" y="264" font-family="Arial" font-size="9" fill="#858585">Your business at a glance</text>
+              <rect x="232" y="287" width="151" height="75" fill="#fafafa" stroke="#151515" stroke-width="1.25"/>
+              <path class="thin" d="M242 347h131M246 300v48"/>
+              <path d="M246 338l21-11 17 8 19-22 19 6 24-27 25 3" fill="none" stroke="#151515" stroke-width="2"/>
+              <circle cx="346" cy="292" r="3" fill="#151515"/>
+              <rect x="395" y="287" width="92" height="75" fill="#151515"/>
+              <text x="405" y="304" font-family="Arial" font-size="8" font-weight="600" fill="#c7c7c7">INCOMING</text>
+              <text x="405" y="328" font-family="Arial" font-size="21" font-weight="700" fill="#fff">24</text>
+              <path d="M407 346h10m5 0h14m5 0h7" stroke="#fff" stroke-width="2" opacity=".75"/>
+              <path class="thin" d="M232 383h253"/>
+              <circle class="solid" cx="236" cy="395" r="3"/>
+              <path class="thin" d="M246 395h115M386 395h83"/>
+            </g>
+            <!-- phone, top-left -->
+            <g class="float-b">
+              <rect x="106" y="74" width="92" height="148" rx="2" fill="#fff" stroke="#151515" stroke-width="1.7"/>
+              <rect x="115" y="87" width="74" height="111" fill="#f9f9f9" stroke="#151515" stroke-width=".9"/>
+              <path class="line" d="M145 134c0-2 2-5 5-5h4l4 10-5 5c3 6 8 11 14 14l5-5 10 4v5c0 4-3 6-6 6-20-2-39-21-41-41z" transform="translate(-12 -7) scale(.88)"/>
+              <path class="thin" d="M137 181h30M146 207h12"/>
+              <rect x="127" y="58" width="52" height="24" fill="#151515"/>
+              <text x="153" y="74" text-anchor="middle" fill="#fff" font-size="8.5" font-family="Arial" font-weight="700" letter-spacing="1">CALLS</text>
+            </g>
+            <!-- top middle AI badge -->
+            <g class="float-c">
+              <rect x="324" y="33" width="83" height="61" fill="#fff" stroke="#151515" stroke-width="1.6"/>
+              <rect x="349" y="46" width="34" height="28" rx="4" fill="none" stroke="#151515" stroke-width="1.6"/>
+              <circle cx="359" cy="58" r="2.2" class="solid"/><circle cx="373" cy="58" r="2.2" class="solid"/>
+              <path class="line" d="M359 66q7 5 14 0M366 46v-6m-4 0h8"/>
+              <text class="tiny" text-anchor="middle" x="366" y="85">AI AGENT</text>
+              <path class="thin" d="M365 94v24"/>
+            </g>
+            <!-- floating calendar upper right -->
+            <g class="float-b">
+              <rect x="521" y="92" width="112" height="99" fill="#fff" stroke="#151515" stroke-width="1.6"/>
+              <rect x="521" y="92" width="112" height="19" fill="#151515"/>
+              <text x="531" y="105" fill="#fff" font-family="Arial" font-size="9" font-weight="700" letter-spacing="1">CALENDAR</text>
+              <path class="thin" d="M533 127h89M533 148h89M533 169h89M551 120v61M577 120v61M603 120v61"/>
+              <rect x="579" y="150" width="22" height="17" fill="#151515"/>
+              <circle cx="544" cy="139" r="4" class="solid"/>
+            </g>
+            <!-- side-line website icon -->
+            <g class="float-c">
+              <rect x="530" y="229" width="121" height="91" fill="#fff" stroke="#151515" stroke-width="1.6"/>
+              <path class="line" d="M530 248h121"/>
+              <circle cx="540" cy="238" r="2" class="solid"/><circle cx="548" cy="238" r="2" fill="#9f9f9f"/>
+              <rect x="543" y="261" width="42" height="41" fill="#151515"/>
+              <path d="M554 281l7-7-7-7m17 0l-7 7 7 7" fill="none" stroke="#fff" stroke-width="2"/>
+              <path class="thin" d="M594 267h45m-45 10h40m-40 10h45m-45 10h28"/>
+              <text class="tiny" x="532" y="332">WEBSITES</text>
+            </g>
+            <!-- inventory module -->
+            <g class="float-b">
+              <rect x="509" y="369" width="112" height="81" fill="#fff" stroke="#151515" stroke-width="1.6"/>
+              <text class="tiny" x="520" y="384">INVENTORY</text>
+              <path class="thin" d="M521 392h89"/>
+              <path class="line" d="M540 402l18-9 18 9-18 9-18-9zm0 0v20l18 9 18-9v-20m-18 9v20"/>
+              <rect x="587" y="408" width="18" height="17" fill="#151515"/>
+              <path d="M591 416h10" stroke="#fff" stroke-width="1.8"/>
+            </g>
+            <!-- a small seated human sketch beside the platform -->
+            <g transform="translate(64 312)">
+              <circle cx="58" cy="-2" r="12" fill="#fff" stroke="#151515" stroke-width="1.7"/>
+              <path class="line" d="M55 9l-8 14 7 40 36 12m-31-62 14 22 26 4M47 25l-18 18 29 18m-5 2 7 31m30-19-2 20M29 43l-10 22"/>
+              <path d="M42 29l12 27 28 9-4-34z" fill="#eee" stroke="#151515" stroke-width="1"/>
+              <path class="thin" d="M27 97h99m-52-44 44-5 9 33H78"/>
+              <path d="M90 56l-5 12h29l4-20z" fill="#fff" stroke="#151515" stroke-width="1.5"/>
+              <path class="thin" d="M40 4l-7-5m38-5 5-6"/>
+            </g>
+            <!-- small square and decorative connection elements -->
+            <rect x="170" y="271" width="20" height="20" class="paper" stroke="#151515" stroke-width="1.4" transform="rotate(45 180 281)"/>
+            <path class="thin" d="M172 277h16m-8-8v24"/>
+            <rect x="460" y="71" width="36" height="22" fill="#151515"/>
+            <text x="478" y="86" text-anchor="middle" fill="#fff" font-family="Arial" font-size="13" font-weight="700">&lt;/&gt;</text>
+            <path class="thin" d="M478 93v25m-10-47h-32v-27h-22"/>
+            <path class="thin" d="M168 250h-28v-26m364 114h47v26"/>
+            <g fill="#1b1b1b">
+              <circle cx="194" cy="420" r="2"/><circle cx="206" cy="420" r="2"/><circle cx="218" cy="420" r="2"/>
+              <circle cx="194" cy="432" r="2"/><circle cx="206" cy="432" r="2"/><circle cx="218" cy="432" r="2"/>
+              <circle cx="194" cy="444" r="2"/><circle cx="206" cy="444" r="2"/><circle cx="218" cy="444" r="2"/>
+              <circle cx="642" cy="362" r="2"/><circle cx="654" cy="362" r="2"/><circle cx="642" cy="374" r="2"/><circle cx="654" cy="374" r="2"/>
+            </g>
+          </svg>
+        </div>
+      </section>
+
+      <footer class="footer" aria-label="Design footer preview">
+        <div class="footer-left">
+          <span class="copyright">© VMV Business 2026</span>
+          <span class="scroll-cue"><span class="scroll-wheel" aria-hidden="true"></span> Built for what's next</span>
+        </div>
+        <div class="footer-right">
+          <span class="service">VMV Call<small>COMMUNICATION</small></span>
+          <span class="service">VMV Agents<small>INTELLIGENCE</small></span>
+          <span class="service">VMV Sites<small>ONLINE PRESENCE</small></span>
+          <span class="service">VMV Ops<small>OPERATIONS</small></span>
+        </div>
       </footer>
-    </section>
-  </main>
+    </main>
+  </div>
 </body>
 </html>
