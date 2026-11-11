@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "1.0.0",
+  "brand": "VMV Business",
+  "scope": "Public module registry for frontend integration planning; not an authenticated service API",
+  "auth": {
+    "futureProvider": "Supabase Auth",
+    "identity": "shared_auth_subject",
+    "businessContext": "business_id",
+    "sessionRule": "verified on server; never trust client claims"
+  },
+  "modules": [
+    {
+      "id": "smart-call",
+      "name": "Smart Call",
+      "group": "communication",
+      "publicPath": "/smart-call/",
+      "workspacePath": "/workspace/?service=smart-call",
+      "state": "pilot-separate",
+      "mobile": {
+        "surface": "calls",
+        "actions": [
+          "answer",
+          "history",
+          "contacts",
+          "optional-translation-captions"
+        ]
+      },
+      "web": {
+        "surface": "telephony-settings",
+        "actions": [
+          "business-number",
+          "ivr",
+          "routing",
+          "greetings",
+          "hours",
+          "language-preferences",
+          "reports",
+          "billing"
+        ]
+      }
+    },
+    {
+      "id": "ai-agents",
+      "name": "AI Agents",
+      "group": "intelligence",
+      "publicPath": "/ai-agents/",
+      "workspacePath": "/workspace/?service=ai-agents",
+      "state": "planned",
+      "mobile": {
+        "surface": "agent-status",
+        "actions": [
+          "status",
+          "alerts"
+        ]
+      },
+      "web": {
+        "surface": "agent-builder",
+        "actions": [
+          "instructions",
+          "knowledge",
+          "channels",
+          "guardrails",
+          "reports"
+        ]
+      }
+    },
+    {
+      "id": "web-services",
+      "name": "Web Services",
+      "group": "digital-presence",
+      "publicPath": "/web-services/",
+      "workspacePath": "/workspace/?service=web-services",
+      "state": "planned",
+      "mobile": {
+        "surface": "website-activity",
+        "actions": [
+          "inquiries",
+          "status"
+        ]
+      },
+      "web": {
+        "surface": "site-builder",
+        "actions": [
+          "pages",
+          "domains",
+          "editor",
+          "forms",
+          "integrations"
+        ]
+      }
+    },
+    {
+      "id": "inventory",
+      "name": "Inventory",
+      "group": "operations",
+      "publicPath": "/inventory/",
+      "workspacePath": "/workspace/?service=inventory",
+      "state": "planned",
+      "mobile": {
+        "surface": "inventory-quick",
+        "actions": [
+          "lookup",
+          "stock-adjustments",
+          "alerts"
+        ]
+      },
+      "web": {
+        "surface": "inventory-management",
+        "actions": [
+          "catalog",
+          "categories",
+          "bulk-import",
+          "suppliers",
+          "rules"
+        ]
+      }
+    },
+    {
+      "id": "scheduling",
+      "name": "Scheduling",
+      "group": "operations",
+      "publicPath": "/scheduling/",
+      "workspacePath": "/workspace/?service=scheduling",
+      "state": "planned",
+      "mobile": {
+        "surface": "calendar",
+        "actions": [
+          "appointments",
+          "availability-overview"
+        ]
+      },
+      "web": {
+        "surface": "schedule-settings",
+        "actions": [
+          "staff-hours",
+          "services",
+          "booking-policies",
+          "integrations"
+        ]
+      }
+    },
+    {
+      "id": "crm-leads",
+      "name": "CRM & Leads",
+      "group": "customers",
+      "publicPath": "/crm-leads/",
+      "workspacePath": "/workspace/?service=crm-leads",
+      "state": "planned",
+      "mobile": {
+        "surface": "customers",
+        "actions": [
+          "contact-lookup",
+          "follow-ups",
+          "notes"
+        ]
+      },
+      "web": {
+        "surface": "crm-management",
+        "actions": [
+          "pipelines",
+          "segments",
+          "imports",
+          "assignment",
+          "reporting"
+        ]
+      }
+    },
+    {
+      "id": "business-operations",
+      "name": "Business Management",
+      "group": "operations",
+      "publicPath": "/business-operations/",
+      "workspacePath": "/workspace/?service=business-operations",
+      "state": "planned",
+      "mobile": {
+        "surface": "daily-operations",
+        "actions": [
+          "orders",
+          "assigned-tasks",
+          "alerts"
+        ]
+      },
+      "web": {
+        "surface": "operations-settings",
+        "actions": [
+          "orders",
+          "staff-access",
+          "plans",
+          "billing"
+        ]
+      }
+    },
+    {
+      "id": "marketing-analytics",
+      "name": "Marketing & Analytics",
+      "group": "growth",
+      "publicPath": "/marketing-analytics/",
+      "workspacePath": "/workspace/?service=marketing-analytics",
+      "state": "planned",
+      "mobile": {
+        "surface": "growth-summary",
+        "actions": [
+          "campaign-reviews",
+          "alerts"
+        ]
+      },
+      "web": {
+        "surface": "marketing-studio",
+        "actions": [
+          "campaigns",
+          "reports",
+          "audience",
+          "metrics"
+        ]
+      }
+    },
+    {
+      "id": "automations",
+      "name": "Automations",
+      "group": "intelligence",
+      "publicPath": "/automations/",
+      "workspacePath": "/workspace/?service=automations",
+      "state": "planned",
+      "mobile": {
+        "surface": "automation-status",
+        "actions": [
+          "status",
+          "approvals",
+          "alerts"
+        ]
+      },
+      "web": {
+        "surface": "workflow-builder",
+        "actions": [
+          "triggers",
+          "conditions",
+          "actions",
+          "logs"
+        ]
+      }
+    }
+  ]
+}
