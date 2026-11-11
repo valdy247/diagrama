@@ -27,7 +27,7 @@ The home page at `/` introduces the full ecosystem and links to each product or 
 
 ## Scope / honesty
 
-This is a **public-facing UI/UX concept**, not a live business-management platform. There are no operational CRM, phone, translation, website-builder, payment, scheduling, or AI-agent features connected to this frontend. Sample screens and data are fictional. The phone feature is in a separate pilot; other modules are in development or planned. There is no pricing, customer authentication or backend integration here.
+This is a **public-facing UI/UX concept**, not a live business-management platform. There are no operational CRM, phone, translation, website-builder, payment, scheduling, or AI-agent features connected to this frontend. Sample screens and data are fictional. The phone feature is in a separate pilot; other modules are in development or planned. There is no public registration or service-management backend. The separate `/workspace/` view now has secure existing-account authentication and read-only account summaries through Supabase RLS.
 
 ## Develop locally
 
@@ -46,6 +46,6 @@ Vercel serves the output in `dist/` from the `main` branch. Every product page i
 - Home navigation now includes a product-category mega-menu, mobile drawer, clear explore CTA, subtle scroll animation, accessible keyboard skip link and monochrome favicon.
 - English and Spanish marketing pages are available at / and /es/, plus nine localized product detail routes under /es/.
 - All pages have matching canonical and localized alternates; robots.txt and sitemap.xml expose twenty public marketing pages while excluding /workspace/ from indexing.
-- Workspace concept at /workspace/ uses /service-catalog.json for the same nine module IDs, and demonstrates app-vs-web roles without touching real accounts or data.
+- Workspace at /workspace/ uses /service-catalog.json and offers existing-account Supabase sign-in, with read-only profile, plan, phone-line and call-count summaries protected by owner-only RLS. Other modules remain previews.
 - docs/app-web-integration.md records the verified existing shared Supabase project, intended tenancy/permission rules, deep-link contract and staged integration plan.
-- **No live Supabase, Twilio, AI, payments, production login or real customer data is accessed by this marketing website.** Shared project authentication will be implemented only after auditing existing Supabase row-level security and app sessions during phase 2.
+- **Only the authenticated workspace accesses private Supabase data**, using the existing public key and owner-only RLS. There are no Twilio, AI, payment or business-setting mutations. Native handoff is being tested on a separate Smart Call feature branch.
