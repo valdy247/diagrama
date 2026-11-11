@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="VMV Business — one connected platform to move your business forward.">
+  <title>VMV Business — Built On What Matters</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fff;
+      --ink: #111;
+      --quiet: #717171;
+      --line: #1b1b1b;
+      --gutter: clamp(22px, 4vw, 76px);
+      --face-half: 150px;
+      --flip-time: 790ms;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: var(--paper); }
+    body {
+      margin: 0; color: var(--ink); background: var(--paper);
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    }
+    .hero {
+      width: 100%; height: 100svh; min-height: 540px;
+      display: grid; grid-template-rows: repeat(3, minmax(0, 1fr));
+      overflow: hidden; isolation: isolate;
+    }
+    .panel { min-width: 0; position: relative; padding-inline: var(--gutter); }
+    .panel--top { display: flex; flex-direction: column; justify-content: space-between; padding-top: clamp(22px, 3vw, 45px); padding-bottom: clamp(20px, 2.8vw, 42px); }
+    .masthead, .footerline {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      letter-spacing: .045em;
+    }
+    .brand {
+      font-size: clamp(25px, 2.5vw, 38px); font-weight: 900;
+      letter-spacing: -.075em; line-height: .9; white-space: nowrap;
+    }
+    .brand sup { font-size: .31em; font-weight: 700; letter-spacing: 0; vertical-align: top; margin-left: 6px; }
+    .masthead-description, .edition, .eyebrow, .footerline, .band-label {
+      font-size: clamp(9px, .75vw, 12px); line-height: 1.4;
+      font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+    }
+    .masthead-description { text-align: center; }
+    .edition { text-align: right; }
+    .statement { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
+    .statement h1, .bottom-copy h2 { margin: 0; font-weight: 900; text-transform: uppercase; letter-spacing: -.095em; line-height: .84; }
+    .statement h1 { font-size: clamp(67px, 11.5vw, 220px); white-space: nowrap; }
+    .eyebrow { align-self: flex-end; margin: 0 0 9px; color: var(--quiet); text-align: right; max-width: 210px; }
+    .period { letter-spacing: -.09em; }
+
+    /* Only the middle third is a 3D rotating slice.
+       The top and bottom third never move. */
+    .band {
+      position: relative; min-height: 0; border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      perspective: 1500px; overflow: hidden; background: var(--paper);
+    }
+    .rotor {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transform: translateZ(calc(-1 * var(--face-half))) rotateX(0deg);
+      transition: transform var(--flip-time) cubic-bezier(.67,.04,.26,.98);
+      will-change: transform;
+    }
+    .rotor.is-flipping {
+      transform: translateZ(calc(-1 * var(--face-half))) rotateX(-90deg);
+    }
+    .rotor.no-transition { transition: none !important; }
+    .face {
+      position: absolute; inset: 0; background: var(--paper);
+      backface-visibility: hidden; -webkit-backface-visibility: hidden;
+      display: flex; justify-content: center; align-items: center;
+      padding-inline: var(--gutter);
+      overflow: hidden; transform-style: preserve-3d;
+    }
+    .face--front { transform: rotateX(0deg) translateZ(var(--face-half)); }
+    .face--next { transform: rotateX(90deg) translateZ(var(--face-half)); }
+    .word {
+      display: block; width: 100%; text-align: center; white-space: nowrap;
+      font-size: var(--word-size, 17vw);
+      line-height: 1; font-weight: 900; letter-spacing: -.095em;
+      text-transform: uppercase; transform: translateZ(1px);
+      user-select: none; pointer-events: none;
+    }
+    .band::before, .band::after {
+      content: ""; z-index: 2; position: absolute; pointer-events: none;
+      left: 0; width: 100%; height: 1px; background: var(--line);
+    }
+    .band::before { top: -1px; }
+    .band::after { bottom: -1px; }
+    .band-label {
+      position: absolute; z-index: 3; pointer-events: none;
+      left: var(--gutter); top: clamp(12px, 1.5vw, 22px); color: var(--quiet);
+    }
+    .band-number {
+      position: absolute; z-index: 3; pointer-events: none;
+      right: var(--gutter); bottom: clamp(12px, 1.5vw, 22px);
+      color: var(--quiet); font-size: clamp(10px,.8vw,12px);
+      font-weight: 700; letter-spacing: .14em;
+    }
+    .band-shadow {
+      opacity: 0; pointer-events: none; position: absolute; inset: 0; z-index: 2;
+      box-shadow: inset 0 24px 35px -26px #0005, inset 0 -26px 35px -28px #0004;
+      transition: opacity 200ms;
+    }
+    .band.is-active .band-shadow { opacity: 1; }
+    .panel--bottom {
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding-top: clamp(22px, 3vw, 45px); padding-bottom: clamp(20px, 3vw, 43px);
+    }
+    .bottom-copy { display: flex; justify-content: space-between; align-items: flex-start; gap: 25px; }
+    .bottom-copy h2 { font-size: clamp(52px, 7vw, 132px); }
+    .bottom-summary {
+      margin: 8px 0 0; max-width: 260px; font-size: clamp(12px, 1.15vw, 17px);
+      line-height: 1.45; letter-spacing: -.015em; font-weight: 500;
+    }
+    .footerline { color: var(--quiet); }
+    .footerline span:first-child { color: var(--ink); }
+    @media (max-width: 780px) {
+      .hero { min-height: 600px; }
+      .masthead-description { display: none; }
+      .eyebrow { display: none; }
+      .statement h1 { font-size: clamp(64px, 15vw, 118px); }
+      .bottom-copy h2 { font-size: clamp(53px, 9.7vw, 90px); }
+      .bottom-summary { font-size: 12px; max-width: 175px; }
+      .footerline span:nth-child(2) { display: none; }
+    }
+    @media (max-width: 520px) {
+      .hero { min-height: 570px; }
+      .brand { font-size: 29px; }
+      .edition { font-size: 9px; }
+      .statement h1 { font-size: clamp(57px, 15.5vw, 85px); }
+      .bottom-copy { flex-direction: column; gap: 12px; }
+      .bottom-copy h2 { font-size: clamp(48px, 10.7vw, 73px); }
+      .bottom-summary { margin: 0; max-width: 300px; font-size: 12px; line-height: 1.36; }
+      .band-label { font-size: 8px; }
+      .band-number { font-size: 9px; }
+    }
+    @media (max-width: 350px) {
+      :root { --gutter: 18px; }
+      .statement h1 { font-size: 15.3vw; }
+      .bottom-copy h2 { font-size: 10vw; }
+    }
+    @media (max-height: 700px) and (min-width: 781px) {
+      .statement h1 { font-size: min(11vw, 21vh); }
+      .bottom-copy h2 { font-size: min(7vw, 14vh); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .rotor, .band-shadow { transition: none !important; }
+      .rotor { will-change: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="hero" aria-label="VMV Business">
+    <!-- First third: fixed -->
+    <section class="panel panel--top" aria-label="Brand introduction">
+      <header class="masthead">
+        <div class="brand" aria-label="VMV Business">VMV<sup>®</sup></div>
+        <span class="masthead-description">THE BUSINESS OPERATING PLATFORM</span>
+        <span class="edition">BUSINESS<br>EST. 2026</span>
+      </header>
+      <div class="statement">
+        <h1>BUILT ON<span class="period">.</span></h1>
+        <p class="eyebrow">THE NEXT GENERATION OF BUSINESS STARTS HERE.</p>
+      </div>
+    </section>
+
+    <!-- Middle third: rotates as one complete horizontal slice -->
+    <section class="band" aria-label="Our values">
+      <span class="band-label" aria-hidden="true">01 / WHAT DRIVES US</span>
+      <div class="rotor" id="rotor" aria-hidden="true">
+        <div class="face face--front"><span class="word" id="current-word">POWER</span></div>
+        <div class="face face--next"><span class="word" id="next-word">VISION</span></div>
+      </div>
+      <div class="band-shadow" aria-hidden="true"></div>
+      <span class="band-number" aria-hidden="true" id="word-counter">01 — 08</span>
+      <span class="sr-only" id="accessible-word">POWER</span>
+    </section>
+
+    <!-- Final third: fixed -->
+    <section class="panel panel--bottom" aria-label="Brand statement">
+      <div class="bottom-copy">
+        <h2>MADE TO<br>MOVE FORWARD.</h2>
+        <p class="bottom-summary">Calls, AI, websites and the tools to grow. One platform for the way you do business.</p>
+      </div>
+      <footer class="footerline">
+        <span>VMV BUSINESS®</span>
+        <span>ONE PLATFORM. MORE POSSIBILITY.</span>
+        <span>DESIGNED FOR WHAT'S NEXT / 2026</span>
+      </footer>
+    </section>
+  </main>
+
+  <style>
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  </style>
+  <script>
+    (() => {
+      "use strict";
+      const words = ["POWER", "VISION", "DISCIPLINE", "AMBITION", "COURAGE", "PURPOSE", "MOMENTUM", "GROWTH"];
+      const band = document.querySelector(".band");
+      const rotor = document.getElementById("rotor");
+      const current = document.getElementById("current-word");
+      const next = document.getElementById("next-word");
+      const count = document.getElementById("word-counter");
+      const accessible = document.getElementById("accessible-word");
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let position = 0;
+      let turning = false;
+      let started = false;
+
+      function placeWord(node, value) {
+        node.textContent = value;
+        const length = value.length;
+        // Keep long words on one line, including narrow phone screens.
+        const size = length >= 10 ? "10.0vw" : length >= 9 ? "11.5vw" : length >= 8 ? "12.7vw" : length >= 7 ? "14.5vw" : "18vw";
+        node.style.setProperty("--word-size", size);
+      }
+      function fitDepth() {
+        band.style.setProperty("--face-half", (band.getBoundingClientRect().height / 2) + "px");
+      }
+      function updateWords() {
+        placeWord(current, words[position]);
+        placeWord(next, words[(position + 1) % words.length]);
+        count.textContent = String(position + 1).padStart(2, "0") + " — " + String(words.length).padStart(2, "0");
+        accessible.textContent = words[position];
+      }
+      function finishTurn() {
+        if (!turning) return;
+        position = (position + 1) % words.length;
+        rotor.classList.add("no-transition");
+        rotor.classList.remove("is-flipping");
+        band.classList.remove("is-active");
+        updateWords();
+        // Two animation frames restore transitions after the reset is painted.
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            rotor.classList.remove("no-transition");
+            turning = false;
+          });
+        });
+      }
+      rotor.addEventListener("transitionend", (event) => {
+        if (event.target === rotor && event.propertyName === "transform") finishTurn();
+      });
+      function flip() {
+        if (turning || document.hidden || reducedMotion.matches) return;
+        turning = true;
+        band.classList.add("is-active");
+        rotor.classList.add("is-flipping");
+      }
+      function refreshMotion() {
+        if (reducedMotion.matches) {
+          rotor.classList.add("no-transition");
+          if (turning) {
+            turning = false;
+            rotor.classList.remove("is-flipping");
+            band.classList.remove("is-active");
+          }
+        } else {
+          rotor.classList.remove("no-transition");
+        }
+      }
+      fitDepth();
+      updateWords();
+      refreshMotion();
+      window.addEventListener("resize", fitDepth, { passive: true });
+      reducedMotion.addEventListener("change", refreshMotion);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden && !turning) fitDepth();
+      });
+      // Remain static for 1.21 s then rotate for 0.79 s: 2 s total.
+      if (!started) {
+        started = true;
+        window.setInterval(flip, 2000);
+      }
+    })();
+  </script>
+</body>
+</html>
