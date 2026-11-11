@@ -24,6 +24,8 @@ export default defineConfig({
         ),
         spanishHome: resolve(import.meta.dirname, "es", "index.html"),
         spanishWorkspace: resolve(import.meta.dirname, "es", "workspace", "index.html"),
+        smartCallControl: resolve(import.meta.dirname, "workspace", "smart-call", "index.html"),
+        spanishSmartCallControl: resolve(import.meta.dirname, "es", "workspace", "smart-call", "index.html"),
         ...Object.fromEntries(
           pages.filter((page) => page !== "workspace").map((page) => ["es-" + page, resolve(import.meta.dirname, "es", page, "index.html")])
         ),
