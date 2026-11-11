@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Preview the VMV Business management workspace architecture before integration with mobile services.">
+  <title>Plataforma de gestión — VMV Business</title>
+  <link rel="stylesheet" href="/src/workspace.css">
+  <script type="module" src="/src/workspace.js"></script>
+  <script type="module" src="/src/workspace-account.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+  <header class="w-top">
+    <a class="w-brand" href="/es/" aria-label="VMV Business inicio">vmv<span>BUSINESS</span></a>
+    <div class="w-top-right">
+      <span class="w-pill">SERVICIOS EN PREPARACIÓN</span>
+      <a class="w-top-link" href="/workspace/" lang="en" hreflang="en">EN</a><a class="w-top-link" href="/">Volver a la web ↗</a>
+    </div>
+  </header>
+  <div class="w-shell">
+    <aside class="w-side" aria-label="Workspace navigation">
+      <p class="w-side-kicker">PANEL EMPRESARIAL</p>
+      <div class="w-side-intro">Un negocio.<br>Todas tus herramientas.</div>
+      <nav id="service-nav" class="w-service-nav" aria-label="Service selection">
+        <a class="w-side-active" href="/workspace/">Resumen <span>↗</span></a>
+        <a href="/es/smart-call/">Smart Call ↗</a>
+        <a href="/es/ai-agents/">AI Agents ↗</a>
+        <a href="/es/web-services/">Web Services ↗</a>
+      </nav>
+      <div class="w-side-bottom">
+        <div class="w-mini-icon">↗</div>
+        <p><b>Web + app</b><br>Dos experiencias. Una misma cuenta.</p>
+      </div>
+    </aside>
+    <main id="main" class="w-main">
+      <div class="w-announce">
+        <span><i aria-hidden="true"></i> PANEL DE GESTIÓN</span>
+        <span>01 / CONEXIÓN APP + WEB</span>
+      </div>
+      <div class="w-heading">
+        <div>
+          <p class="w-label">ADMINISTRACIÓN / VISTA DE TRABAJO</p>
+          <h1>Todo,<br><strong>conectado.</strong></h1>
+          <p class="w-description">Inicia sesión con tu cuenta Supabase para ver tus propios datos de Smart Call. Los demás módulos continúan como demostraciones visuales.</p>
+        </div>
+        <div class="w-arrow" aria-hidden="true">↗</div>
+      </div>
+      <div class="w-stats" aria-label="Preview status">
+        <div><span class="w-label">MÓDULOS PREVISTOS</span><strong id="total-services">9</strong></div>
+        <div><span class="w-label">EN LA WEB</span><strong>Administrar</strong></div>
+        <div><span class="w-label">EN LA APP</span><strong>Use</strong></div>
+      </div>
+      <section id="workspace-account" class="w-account" aria-labelledby="w-account-title">
+        <div class="w-account-intro">
+          <p class="w-label">TU CUENTA REAL / SUPABASE COMPARTIDO</p>
+          <h2 id="w-account-title">Tu cuenta.<br>Una identidad.</h2>
+          <p id="w-connection-help" class="w-auth-explainer" role="status">Comprobando la sesión segura…</p>
+        </div>
+        <div id="w-login-view" class="w-auth-panel" hidden>
+          <div class="w-account-title"><h3>Entra a tu plataforma</h3><span>SOLO CUENTAS EXISTENTES</span></div>
+          <p class="w-auth-explainer">Utiliza el mismo correo y contraseña que en Smart Call. Es la misma cuenta Supabase; no estás creando otra.</p>
+          <form id="w-login-form" class="w-auth-form" autocomplete="on">
+            <label for="w-email">Correo electrónico</label>
+            <input id="w-email" name="email" type="email" autocomplete="email" inputmode="email" required maxlength="254" placeholder="you@business.com">
+            <label for="w-password">Contraseña</label>
+            <input id="w-password" name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="Your account password">
+            <button id="w-login-submit" type="submit">Iniciar sesión ↗</button>
+          </form>
+          <p class="w-auth-disclaimer">No pediremos un nuevo registro aquí. Revisaremos las preguntas de creación de cuenta en una etapa posterior.</p>
+        </div>
+        <div id="w-account-view" class="w-account-view" hidden>
+          <div class="w-account-title"><h3 id="w-account-name">—</h3><span>SESIÓN VERIFICADA</span></div>
+          <p class="w-auth-email">Cuenta: <span id="w-account-email">—</span></p>
+          <div class="w-account-stats">
+            <div><span>NOMBRE DEL NEGOCIO</span><strong id="w-account-business">—</strong></div>
+            <div><span>LÍNEA SMART CALL</span><strong id="w-account-line">—</strong></div>
+            <div><span>ESTADO DEL PLAN</span><strong id="w-account-plan">—</strong></div>
+            <div><span>LLAMADAS REGISTRADAS</span><strong id="w-account-calls">—</strong></div>
+            <div><span>IDIOMAS</span><strong id="w-account-language">—</strong></div>
+          </div>
+          <section class="w-recent-calls" aria-labelledby="w-recent-title">
+            <h4 id="w-recent-title">Actividad reciente de Smart Call</h4>
+            <div id="w-calls-list" class="w-recent-list"><p>Cargando historial de llamadas…</p></div>
+          </section>
+          <div class="w-account-actions"><button id="w-account-refresh" type="button">Actualizar cuenta ↻</button><a class="w-open-ios" href="smartjob://calls" aria-label="Open Smart Call in the iPhone app">Abrir en la app iPhone ↗</a><button id="w-signout" type="button">Cerrar sesión</button></div>
+          <p class="w-auth-disclaimer">The iPhone link requires Smart Call to be installed with support for this route. The web and app share your Supabase account, but do not transfer sessions in links.</p>
+        </div>
+        <p id="w-auth-message" class="w-auth-message" role="status" aria-live="polite"></p>
+      </section>
+      <section class="w-services" aria-labelledby="services-title">
+        <div class="w-services-head"><div><p class="w-label">02 / CATÁLOGO DE SERVICIOS</p><h2 id="services-title">Tus herramientas disponibles.</h2></div><p>Elige un producto para descubrir qué se hará desde la app y qué se configurará en la web.</p></div>
+        <div class="w-tabs" role="group" aria-label="Filter services">
+          <button type="button" class="w-filter is-selected" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="w-filter" data-filter="communication" aria-pressed="false">Comunicación</button>
+          <button type="button" class="w-filter" data-filter="intelligence" aria-pressed="false">Inteligencia</button>
+          <button type="button" class="w-filter" data-filter="digital-presence" aria-pressed="false">Presencia digital</button>
+          <button type="button" class="w-filter" data-filter="operations" aria-pressed="false">Operaciones</button>
+          <button type="button" class="w-filter" data-filter="customers" aria-pressed="false">Clientes</button>
+          <button type="button" class="w-filter" data-filter="growth" aria-pressed="false">Crecimiento</button>
+        </div>
+        <div id="service-cards" class="w-cards" aria-live="polite">
+          <div class="w-card w-card-placeholder"><span>SERVICIOS</span><strong>Preparando tu espacio…</strong></div>
+        </div>
+      </section>
+      <section id="service-detail" class="w-details" aria-labelledby="detail-title">
+        <p class="w-label">03 / UNA EXPERIENCIA CONECTADA</p>
+        <div class="w-detail-head"><h2 id="detail-title">App y web.<br>Distintas funciones.</h2><span class="w-detail-hint">SELECCIONA UN SERVICIO</span></div>
+        <div class="w-detail-columns">
+          <div><span class="w-label">APP MÓVIL</span><h3>Trabaja desde donde estés.</h3><ul id="mobile-actions"><li>Atiende llamadas y usa las herramientas cotidianas.</li><li>Consulta lo que importa durante el día.</li></ul></div>
+          <div><span class="w-label">PLATAFORMA WEB</span><h3>Configura y administra.</h3><ul id="web-actions"><li>Configura opciones avanzadas de los servicios.</li><li>Revisa configuraciones, accesos e informes.</li></ul></div>
+        </div>
+        <div class="w-detail-footer"><span id="service-availability">Los módulos nuevos todavía no están conectados.</span><a id="explore-service" href="/es/#products">Conocer el producto ↗</a></div>
+      </section>
+      <section class="w-integration" aria-labelledby="next-title">
+        <p class="w-label">04 / LOS SIGUIENTES PASOS</p>
+        <h2 id="next-title">One identity.<br>Permisos seguros.</h2>
+        <div class="w-steps">
+          <div><span>01</span><h3>Cuenta compartida</h3><p>La app y la web utilizan el mismo proyecto Supabase. Las sesiones se guardan por separado y los enlaces nunca llevan tokens.</p></div>
+          <div><span>02</span><h3>Contexto empresarial</h3><p>Cargar servicios, permisos y datos correspondientes al negocio autenticado.</p></div>
+          <div><span>03</span><h3>Navegación segura</h3><p>Abrir opciones web desde la app sin exponer tokens ni datos de clientes en la dirección.</p></div>
+        </div>
+        <p class="w-scope">Esta plataforma permite iniciar sesión y consultar información de Smart Call en modo lectura. Los demás servicios son demostraciones; el nuevo registro se revisará después.</p>
+      </section>
+    </main>
+  </div>
+  <footer class="w-bottom"><span>© 2026 VMV Business</span><span>Servicios en demostración · Cuenta Supabase compartida</span><a href="/es/">Volver al inicio ↗</a></footer>
+</body>
+</html>
