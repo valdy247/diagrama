@@ -81,7 +81,7 @@ function renderCards(modules, filter, current) {
     card.append(make("p", null, (spanish?spanishDescriptions[module.id]:serviceDescriptions[module.id]) || ""));
     const bottom = make("div", "w-card-bottom");
     const button = make("a", null, spanish?"Ver funciones ↗":"View responsibilities ↗");
-    button.href = module.workspacePath;
+    button.href = (spanish?"/es":"")+module.workspacePath;
     button.addEventListener("click", event => {
       event.preventDefault();
       showService(module);
@@ -104,7 +104,7 @@ async function initialize() {
     count.textContent = String(modules.length);
     for (const module of modules) {
       const a = make("a", null, module.name + " ↗");
-      a.href = module.workspacePath;
+      a.href = (spanish?"/es":"")+module.workspacePath;
       a.addEventListener("click", event => {event.preventDefault();showService(module);document.getElementById("service-detail").scrollIntoView({block:"start"});});
       nav.append(a);
     }
