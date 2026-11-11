@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#ffffff">
   <meta name="description" content="VMV Business. Calls, AI agents, websites and business tools, beautifully connected.">
-  <title>VMV Business — Everything, connected.</title>
+  <title>VMV Business — One Connected Platform</title>
+  <link rel="stylesheet" href="/src/site.css">
   <style>
     :root{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;color:#141414;background:#ffffff;font-synthesis:none;-webkit-font-smoothing:antialiased}
     *,*::before,*::after{box-sizing:border-box}
@@ -100,15 +101,21 @@
 <body>
   <div class="stage">
     <main class="site" aria-label="VMV Business homepage design concept">
-      <header class="header">
+      <header class="header" id="top">
         <div class="brand" aria-label="VMV Business">vmv<small>BUSINESS</small></div>
-        <nav class="nav" aria-label="Navigation preview">
-          <span class="selected">Home</span><span>Services</span><span>Solutions</span><span>About</span><span>Contact</span>
+        <nav class="nav" aria-label="Main navigation">
+          <a class="selected" href="#top">Home</a><a href="#platform">Platform</a><a href="#products">Products</a><a href="#solutions">Solutions</a><a href="#app">App</a><a href="#contact">Vision</a>
         </nav>
         <div class="social" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.7" r=".9" fill="currentColor" stroke="none"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 6.2a8 8 0 0 1-2.3.7 4 4 0 0 0 1.8-2.2 8.4 8.4 0 0 1-2.5 1 4 4 0 0 0-7 2.7c0 .3 0 .6.1.9a11.3 11.3 0 0 1-8.2-4.2 4 4 0 0 0 1.2 5.3 4 4 0 0 1-1.8-.5 4 4 0 0 0 3.2 4 4 4 0 0 1-1.8.1 4 4 0 0 0 3.8 2.8 8.1 8.1 0 0 1-5 1.7H1a11.5 11.5 0 0 0 6.2 1.8c7.4 0 11.5-6.2 11.5-11.6v-.5a8.3 8.3 0 0 0 1.7-2.2z"/></svg>
           <svg class="grid-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M5 8V5h3m8 0h3v3m0 8v3h-3m-8 0H5v-3M5 12h14M12 5v14"/></svg>
+          <details class="vmv-mobile-menu">
+            <summary aria-label="Open navigation">MENU</summary>
+            <div class="vmv-mobile-menu-inner">
+              <a href="#top">Home</a><a href="#platform">Platform</a><a href="#products">Products</a><a href="#solutions">Solutions</a><a href="#app">App</a><a href="#contact">Vision</a>
+            </div>
+          </details>
         </div>
       </header>
 
@@ -237,6 +244,361 @@
           <span class="service">VMV Agents<small>INTELLIGENCE</small></span>
           <span class="service">VMV Sites<small>ONLINE PRESENCE</small></span>
           <span class="service">VMV Ops<small>OPERATIONS</small></span>
+        </div>
+      </footer>
+
+
+      <!-- 02 / Intro manifesto -->
+      <section class="vmv-section vmv-intro" id="platform" aria-labelledby="platform-title">
+        <div class="vmv-inner">
+          <p class="vmv-kicker">01 / A BETTER WAY TO RUN BUSINESS</p>
+          <h2 class="vmv-title" id="platform-title">Big ideas.<br><b>One connected</b><br>business.</h2>
+          <div class="vmv-intro-lead">
+            <p class="vmv-body">The best tools shouldn't feel like separate businesses. VMV brings communication, AI, customers and everyday operations into one thoughtfully connected experience — built around the way you work.</p>
+            <div class="vmv-intro-badge"><i aria-hidden="true">↗</i><span class="vmv-micro">ONE ECOSYSTEM<br>BUILT TO GROW</span></div>
+          </div>
+        </div>
+      </section>
+
+      <div class="vmv-marquee" aria-label="VMV Business capabilities">
+        <div class="vmv-marquee-inner">
+          <strong>COMMUNICATION</strong><span aria-hidden="true">✳</span>
+          <strong>INTELLIGENCE</strong><span aria-hidden="true">✳</span>
+          <strong>OPERATIONS</strong><span aria-hidden="true">✳</span>
+          <strong>CONNECTION</strong><span aria-hidden="true">✳</span>
+          <strong>GROWTH</strong>
+        </div>
+      </div>
+
+      <!-- 03 / Product ecosystem -->
+      <section class="vmv-section vmv-products" id="products" aria-labelledby="products-title">
+        <div class="vmv-inner">
+          <p class="vmv-kicker">02 / THE VMV ECOSYSTEM</p>
+          <div class="vmv-section-head">
+            <h2 class="vmv-title" id="products-title">Everything you need.<br>Nothing you don't.</h2>
+            <p class="vmv-body">Start with one solution. Add more whenever your business is ready. One identity, one connected workspace.</p>
+          </div>
+
+          <div class="vmv-product-grid">
+            <article class="vmv-product vmv-product--large">
+              <div class="vmv-product-copy">
+                <span class="vmv-product-number">01 / COMMUNICATION</span>
+                <h3>VMV Call.</h3>
+                <p>Business calls with live English–Spanish interpretation, calling essentials, and a clear mobile-first experience.</p>
+                <span class="vmv-tag">VOICE • INTERPRETATION</span>
+              </div>
+              <div class="vmv-call-illustration" aria-hidden="true">
+                <div class="wave"></div><div class="wave"></div><div class="wave"></div>
+                <svg viewBox="0 0 90 90"><path d="M22 18c-7 0-13 7-11 15 6 23 24 42 46 47 8 2 15-4 15-11v-7l-16-8-9 10C36 59 30 52 26 41l10-9-8-14z"/></svg>
+              </div>
+            </article>
+            <article class="vmv-product">
+              <span class="vmv-product-number">02 / INTELLIGENCE</span>
+              <div class="vmv-product-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64"><rect x="12" y="18" width="40" height="33" rx="5"/><path d="M32 18V9m-5 0h10M22 32h1m18 0h1m-19 9c6 5 12 5 18 0M7 30h5m40 0h5"/><circle cx="23" cy="31" r="3"/><circle cx="41" cy="31" r="3"/></svg>
+              </div>
+              <h3>VMV Agents.</h3>
+              <p>Design AI assistants that help respond to questions, guide customers and support everyday workflows.</p>
+            </article>
+            <article class="vmv-product">
+              <span class="vmv-product-number">03 / ONLINE PRESENCE</span>
+              <div class="vmv-product-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64"><rect x="7" y="10" width="50" height="43"/><path d="M7 23h50m-43-7h1m7 0h1m7 0h1M20 32l-8 7 8 7m24-14 8 7-8 7M35 29l-6 19"/></svg>
+              </div>
+              <h3>VMV Sites.</h3>
+              <p>A home for websites, online experiences, forms and the digital presence of your business.</p>
+            </article>
+            <article class="vmv-product">
+              <span class="vmv-product-number">04 / OPERATIONS</span>
+              <div class="vmv-product-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64"><path d="M10 19l22-11 22 11-22 12zM10 19v26l22 11 22-11V19M32 31v25M21 13l23 12M23 39l6 3m-6 5 6 3"/></svg>
+              </div>
+              <h3>Inventory.</h3>
+              <p>Keep products, quantities, movements and low-stock alerts together — including quick updates from your phone.</p>
+            </article>
+            <article class="vmv-product">
+              <span class="vmv-product-number">05 / SCHEDULING</span>
+              <div class="vmv-product-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64"><rect x="8" y="12" width="48" height="44" rx="2"/><path d="M8 25h48m-36-18v11m24-11v11m-25 17h7m12 0h7m-26 11h7m12 0h7"/></svg>
+              </div>
+              <h3>Calendar.</h3>
+              <p>Bookings, appointments, team availability and reminders in a simpler daily schedule.</p>
+            </article>
+            <article class="vmv-product">
+              <span class="vmv-product-number">06 / CUSTOMER RELATIONSHIPS</span>
+              <div class="vmv-product-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64"><circle cx="24" cy="23" r="10"/><path d="M7 53c0-12 7-18 17-18s17 6 17 18zM43 15c8 0 12 14 3 18m2 4c6 2 9 8 9 16H45"/></svg>
+              </div>
+              <h3>CRM &amp; Leads.</h3>
+              <p>Know your customers, follow up on opportunities and keep every important conversation connected.</p>
+            </article>
+          </div>
+
+          <div class="vmv-secondary-label">
+            <span class="vmv-micro">MORE WAYS TO RUN YOUR BUSINESS</span>
+            <span class="vmv-note">Additional modules in the VMV vision</span>
+          </div>
+          <div class="vmv-secondary-list" aria-label="Additional planned VMV modules">
+            <div class="vmv-secondary-item"><span>Orders</span><span>↗ 07</span></div>
+            <div class="vmv-secondary-item"><span>Marketing</span><span>↗ 08</span></div>
+            <div class="vmv-secondary-item"><span>Analytics</span><span>↗ 09</span></div>
+            <div class="vmv-secondary-item"><span>Billing</span><span>↗ 10</span></div>
+            <div class="vmv-secondary-item"><span>Teams</span><span>↗ 11</span></div>
+            <div class="vmv-secondary-item"><span>Automations</span><span>↗ 12</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 04 / The web dashboard visual -->
+      <section class="vmv-section vmv-platform" id="workspace" aria-labelledby="workspace-title">
+        <div class="vmv-inner">
+          <p class="vmv-kicker">03 / ONE WORKSPACE</p>
+          <div class="vmv-section-head">
+            <h2 class="vmv-title" id="workspace-title">A clearer view<br>of your day.</h2>
+            <p class="vmv-body">From phone calls to orders and appointments, your tools make more sense when they live together.</p>
+          </div>
+          <div class="vmv-dashboard" role="img" aria-label="Concept dashboard showing VMV Business navigation, sample calls, appointments, customer activity and business overview">
+            <aside class="vmv-dash-sidebar" aria-hidden="true">
+              <span class="vmv-dash-mark">vmv.</span>
+              <span class="vmv-dash-small">WORKSPACE</span>
+              <div class="vmv-dash-links">
+                <span class="vmv-dash-link vmv-dash-link--active">Overview</span>
+                <span class="vmv-dash-link">Calls</span>
+                <span class="vmv-dash-link">AI Agents</span>
+                <span class="vmv-dash-link">Customers</span>
+                <span class="vmv-dash-link">Inventory</span>
+                <span class="vmv-dash-link">Calendar</span>
+                <span class="vmv-dash-link">Websites</span>
+              </div>
+              <div class="vmv-dash-sidebar-bottom">
+                <span class="vmv-dash-small">ONE CONNECTED SYSTEM</span>
+              </div>
+            </aside>
+            <div class="vmv-dash-main">
+              <div class="vmv-dash-head">
+                <div><span class="vmv-dash-small">MY BUSINESS / OVERVIEW</span><h3>Your day, simplified.</h3></div>
+                <div class="vmv-avatar" aria-hidden="true">VM</div>
+              </div>
+              <div class="vmv-dash-row">
+                <div class="vmv-dash-stat vmv-dash-stat--black"><span class="vmv-dash-small">CALL ACTIVITY</span><b>24</b><span class="vmv-dash-small">EXAMPLE OVERVIEW</span></div>
+                <div class="vmv-dash-stat"><span class="vmv-dash-small">SCHEDULED</span><b>08</b><span class="vmv-dash-small">APPOINTMENTS</span></div>
+                <div class="vmv-dash-stat"><span class="vmv-dash-small">NEW LEADS</span><b>12</b><span class="vmv-dash-small">AWAITING REVIEW</span></div>
+              </div>
+              <div class="vmv-dash-bottom">
+                <div class="vmv-dash-chart">
+                  <div><span class="vmv-dash-small">ACTIVITY / SAMPLE VIEW</span><h3 class="vmv-subhead" style="font-size:22px;margin-top:9px">Business overview</h3></div>
+                  <svg viewBox="0 0 480 155" aria-hidden="true" preserveAspectRatio="none">
+                    <path d="M0 130H480M0 92H480M0 54H480M0 16H480" stroke="#e5e5e5" stroke-width="1"/>
+                    <path d="M0 124 45 102 84 111 130 82 171 94 209 53 253 72 290 39 339 58 378 28 426 41 480 13" fill="none" stroke="#111" stroke-width="3"/>
+                    <path d="M0 124 45 102 84 111 130 82 171 94 209 53 253 72 290 39 339 58 378 28 426 41 480 13V150H0Z" fill="#111" opacity=".035"/>
+                    <circle cx="378" cy="28" r="5" fill="#111"/>
+                  </svg>
+                </div>
+                <div class="vmv-dash-activity">
+                  <span class="vmv-dash-small">RECENT ACTIVITY / EXAMPLE</span>
+                  <div class="vmv-dash-activity-item"><i class="vmv-dash-dot"></i><span>New appointment<small>Calendar</small></span></div>
+                  <div class="vmv-dash-activity-item"><i class="vmv-dash-dot"></i><span>New customer inquiry<small>CRM &amp; Leads</small></span></div>
+                  <div class="vmv-dash-activity-item"><i class="vmv-dash-dot"></i><span>Inventory notice<small>Operations</small></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p class="vmv-dash-disclaimer">Concept interface. All figures and activity shown are illustrative, not live business data.</p>
+        </div>
+      </section>
+
+      <!-- 05 / The mobile app -->
+      <section class="vmv-section vmv-experience" id="app" aria-labelledby="app-title">
+        <div class="vmv-inner">
+          <p class="vmv-kicker">04 / BUSINESS IN YOUR POCKET</p>
+          <div class="vmv-experience-layout">
+            <div class="vmv-phone-region">
+              <div class="vmv-phone" role="img" aria-label="Concept preview of a VMV Business mobile app with calls, customers, inventory, calendar, AI agents and website tools">
+                <div class="vmv-phone-status"><span>9:41</span><span>●●● ▮</span></div>
+                <div class="vmv-phone-header"><small>YOUR WORKSPACE</small><h3>Good morning.</h3></div>
+                <div class="vmv-phone-banner"><b>VMV CALL</b><span>Ready to receive ↗</span></div>
+                <div class="vmv-phone-tiles">
+                  <div class="vmv-phone-tile vmv-phone-tile--black"><b>↗</b><span>Calls</span></div>
+                  <div class="vmv-phone-tile"><b>◉</b><span>Customers</span></div>
+                  <div class="vmv-phone-tile"><b>▦</b><span>Inventory</span></div>
+                  <div class="vmv-phone-tile"><b>◷</b><span>Calendar</span></div>
+                  <div class="vmv-phone-tile"><b>✳</b><span>AI Agents</span></div>
+                  <div class="vmv-phone-tile"><b>⌘</b><span>Websites</span></div>
+                </div>
+                <div class="vmv-phone-nav"><span>HOME</span><span>CALL</span><span>TOOLS</span><span>PROFILE</span></div>
+              </div>
+            </div>
+            <div class="vmv-experience-copy">
+              <h2 class="vmv-title" id="app-title">One app.<br><b>Made for</b><br>your day.</h2>
+              <p class="vmv-body">Your phone is where business happens. Keep calls, schedules, inventory checks and customer follow-ups close. Only the tools your team needs are visible.</p>
+              <div class="vmv-feature-lines">
+                <div class="vmv-feature"><span class="vmv-n">01</span><div><b>Call without the clutter</b><small>Calling controls and live interpretation in the phone experience.</small></div></div>
+                <div class="vmv-feature"><span class="vmv-n">02</span><div><b>Make everyday updates</b><small>Quick actions for appointments, products and customers.</small></div></div>
+                <div class="vmv-feature"><span class="vmv-n">03</span><div><b>See what matters to your role</b><small>Personalized tools and access based on each team member.</small></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 / Responsibilities of web and app -->
+      <section class="vmv-section vmv-web-vs-app" id="how-it-works" aria-labelledby="surfaces-title">
+        <div class="vmv-inner">
+          <p class="vmv-kicker">05 / DESIGNED FOR THE RIGHT MOMENT</p>
+          <div class="vmv-section-head">
+            <h2 class="vmv-title" id="surfaces-title">One system.<br>Different ways<br>to work.</h2>
+            <p class="vmv-body">A powerful platform doesn't need to put every setting on a small screen. VMV separates quick actions from deep configuration.</p>
+          </div>
+          <div class="vmv-surfaces">
+            <article class="vmv-surface">
+              <span class="vmv-surface-num">01 / MOBILE APP</span>
+              <div class="vmv-surface-mark" aria-hidden="true">▣</div>
+              <h3>Work from anywhere.</h3>
+              <p>Answer calls, see appointments, update inventory, check leads and stay connected to the business.</p>
+            </article>
+            <article class="vmv-surface">
+              <span class="vmv-surface-num">02 / WEB PLATFORM</span>
+              <div class="vmv-surface-mark" aria-hidden="true">⌘</div>
+              <h3>Build and configure.</h3>
+              <p>Manage phone lines, design agents, edit websites, set automation rules, review reports and control permissions.</p>
+            </article>
+            <article class="vmv-surface">
+              <span class="vmv-surface-num">03 / APP → WEB</span>
+              <div class="vmv-surface-mark" aria-hidden="true">↗</div>
+              <h3>Go deeper in a tap.</h3>
+              <p>Keep advanced tools visible in your app and open the corresponding web experience when you need it.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 / Specific industry examples -->
+      <section class="vmv-section vmv-solutions" id="solutions" aria-labelledby="solutions-title">
+        <div class="vmv-inner">
+          <p class="vmv-kicker">06 / MADE FOR REAL BUSINESSES</p>
+          <div class="vmv-section-head">
+            <h2 class="vmv-title" id="solutions-title">Every business<br>works differently.</h2>
+            <p class="vmv-body">Your workspace should reflect how you actually work, whether you're serving customers, managing a crew or taking bookings.</p>
+          </div>
+          <div class="vmv-industry-grid">
+            <article class="vmv-industry">
+              <span class="vmv-industry-no">01 / FOOD &amp; BAKERY</span>
+              <div class="vmv-industry-art" aria-hidden="true">
+                <svg viewBox="0 0 160 160"><path d="M28 104h104v25H28zm10-42h84v42H38zm10-9c0-21 14-29 32-29s32 8 32 29v9H48zM34 117h92M80 24v-11m-28 43c12-8 21-8 28 0s20 8 28 0M60 104V80m20 24V78m20 26V80"/></svg>
+              </div>
+              <h3>Bakery &amp; retail.</h3>
+              <p>Calls, custom orders, stock and calendars in one organized daily view.</p>
+            </article>
+            <article class="vmv-industry">
+              <span class="vmv-industry-no">02 / HOME SERVICES</span>
+              <div class="vmv-industry-art" aria-hidden="true">
+                <svg viewBox="0 0 160 160"><path d="M23 73L80 28l57 45M34 65v70h92V65m-66 70V95h40v40M22 135h117M52 47V22h16v11M80 81h1M45 82h14m42 0h14"/></svg>
+              </div>
+              <h3>Contractors.</h3>
+              <p>Customers, job schedules, estimates and follow-ups without losing track of the details.</p>
+            </article>
+            <article class="vmv-industry">
+              <span class="vmv-industry-no">03 / APPOINTMENT-BASED</span>
+              <div class="vmv-industry-art" aria-hidden="true">
+                <svg viewBox="0 0 160 160"><rect x="25" y="29" width="110" height="109" rx="2"/><path d="M25 51h110M49 16v27m62-27v27M44 73h18m17 0h18m17 0h7M44 97h18m17 0h18m17 0h7M44 120h18m17 0h18"/></svg>
+              </div>
+              <h3>Studios &amp; salons.</h3>
+              <p>Appointments, clients, reminders and intelligent phone support working together.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 / Use journey -->
+      <section class="vmv-section vmv-process" id="approach" aria-labelledby="approach-title">
+        <div class="vmv-inner">
+          <p class="vmv-kicker">07 / THE VMV APPROACH</p>
+          <h2 class="vmv-title" id="approach-title">Start simple.<br><b>Grow connected.</b></h2>
+          <div class="vmv-process-grid">
+            <article class="vmv-process-step">
+              <span class="vmv-no">01 — CHOOSE</span>
+              <h3>Pick the tools<br>you need.</h3>
+              <p>Begin with calls, agents, sites or another business module. No crowded workspace.</p>
+            </article>
+            <article class="vmv-process-step">
+              <span class="vmv-no">02 — PERSONALIZE</span>
+              <h3>Make it<br>your own.</h3>
+              <p>Arrange your modules, set permissions and configure the details in the web platform.</p>
+            </article>
+            <article class="vmv-process-step">
+              <span class="vmv-no">03 — CONNECT</span>
+              <h3>Run your<br>day together.</h3>
+              <p>Use your personalized mobile workspace for quick tasks and return to the web when you need more.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 / Belief statement -->
+      <section class="vmv-section vmv-belief" id="about" aria-labelledby="belief-title">
+        <div class="vmv-inner">
+          <p class="vmv-kicker">08 / WHAT WE BELIEVE</p>
+          <h2 class="sr-only" id="belief-title">Our belief</h2>
+          <blockquote>Ambitious businesses<br>deserve <em>powerful tools.</em><br>Not more complexity.</blockquote>
+          <p>VMV BUSINESS / A CONNECTED VISION FOR MODERN WORK</p>
+        </div>
+      </section>
+
+      <!-- 10 / FAQ -->
+      <section class="vmv-section vmv-faq" id="questions" aria-labelledby="faq-title">
+        <div class="vmv-inner">
+          <div><p class="vmv-kicker">09 / GOOD QUESTIONS</p><h2 id="faq-title">A little<br>more clarity.</h2></div>
+          <div class="vmv-faq-list">
+            <details>
+              <summary>Do I need a separate app for every tool?</summary>
+              <p>No. The vision is one personalized VMV Business app with the modules your company needs, connected to a web platform for advanced management.</p>
+            </details>
+            <details>
+              <summary>How does translation fit into VMV Call?</summary>
+              <p>VMV Call is designed around a simple phone experience. Supported bilingual calls can use live interpretation, while advanced language and line settings belong in the web platform.</p>
+            </details>
+            <details>
+              <summary>What's handled in the app versus the web?</summary>
+              <p>Everyday work — calls, appointments, customer lookups and inventory checks — belongs in the app. Setup, website editing, integrations and complex workflows belong on the web. Advanced options can be opened from the app.</p>
+            </details>
+            <details>
+              <summary>Can the workspace change as my business grows?</summary>
+              <p>That's the idea: businesses should be able to add modules and organize their workspace without switching to a completely different platform.</p>
+            </details>
+            <details>
+              <summary>Are all of these products available today?</summary>
+              <p>This website illustrates VMV Business's product direction. Some solutions are being developed or planned. Availability, pricing and integrations will be announced when they are verified.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 / Closing statement + site footer -->
+      <section class="vmv-section vmv-end" id="contact" aria-labelledby="end-title">
+        <div class="vmv-inner">
+          <p class="vmv-kicker">10 / THE FUTURE IS CONNECTED</p>
+          <h2 class="vmv-end-title" id="end-title">MAKE<br>IT BIG.</h2>
+          <div class="vmv-end-row">
+            <p>Your next chapter deserves a business platform built to move with you. This is where VMV begins.</p>
+            <div class="vmv-end-seal" aria-hidden="true">↗</div>
+          </div>
+        </div>
+      </section>
+      <footer class="vmv-footer-main" aria-label="VMV Business site footer">
+        <div class="vmv-inner">
+          <div class="vmv-footer-top">
+            <div class="vmv-footer-logo">vmv.<small>BUSINESS</small></div>
+            <div class="vmv-footer-links">
+              <div><h3>PLATFORM</h3><span>Overview</span><span>Mobile app</span><span>How it works</span></div>
+              <div><h3>PRODUCTS</h3><span>VMV Call</span><span>AI Agents</span><span>Websites</span><span>Operations</span></div>
+              <div><h3>COMPANY</h3><span>Our vision</span><span>Solutions</span><span>What comes next</span></div>
+            </div>
+          </div>
+          <div class="vmv-footer-bottom">
+            <span>© 2026 VMV Business. A connected future.</span>
+            <span>Design preview • Product capabilities subject to development and validation.</span>
+            <span>MADE FOR WHAT'S NEXT.</span>
+          </div>
         </div>
       </footer>
     </main>
