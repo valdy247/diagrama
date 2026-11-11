@@ -297,3 +297,44 @@ html { scroll-padding-top:24px; }
   html{scroll-behavior:auto;}
   *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
 }
+
+
+/* Product architecture: individual product pages and semantically related groups. */
+.vmv-product-categories {
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  margin:-20px 0 37px;
+}
+.vmv-product-categories a{
+  display:inline-flex;gap:8px;align-items:center;
+  border:1px solid #d6d6d6;border-radius:99px;
+  padding:11px 17px;text-decoration:none;color:#3a3a3a;
+  font-size:11px;letter-spacing:.025em;
+  transition:background .2s,color .2s,border-color .2s;
+}
+.vmv-product-categories a:hover,.vmv-product-categories a:focus-visible{
+  background:#161616;color:#fff;border-color:#161616;
+}
+.vmv-product-link{
+  display:inline-flex;align-items:center;gap:9px;
+  align-self:flex-start;margin-top:24px;
+  color:#151515;font-size:12px;font-weight:650;
+  text-decoration:none;border-bottom:1px solid #151515;
+  padding-bottom:6px;white-space:nowrap;
+}
+.vmv-product-link:hover{text-decoration:none;gap:14px;}
+.vmv-product--large .vmv-product-link{margin-top:22px;}
+.vmv-secondary-item{text-decoration:none;color:#161616;}
+.vmv-secondary-item:hover{background:#f9f9f8;}
+.footer-right a.service{display:block;text-decoration:none;color:#fff;}
+.footer-right a.service:hover{text-decoration:underline;text-underline-offset:6px;}
+.vmv-footer-links a{display:block;font-size:12px;margin-bottom:13px;color:#c5c5c5;text-decoration:none;}
+.vmv-footer-links a:hover{text-decoration:underline;text-underline-offset:4px;}
+.vmv-product a:focus-visible,.vmv-product-categories a:focus-visible,.vmv-secondary-item:focus-visible,.vmv-footer-links a:focus-visible,.footer-right a:focus-visible{outline:2px solid #222;outline-offset:4px;}
+.footer-right a:focus-visible{outline-color:#fff;}
+@media(max-width:760px){
+ .vmv-product-categories{margin-top:-5px;}
+ .vmv-product--large .vmv-product-link{order:5;}
+}
+@media(prefers-reduced-motion:reduce){
+ .vmv-product-categories a{transition:none;}
+}
