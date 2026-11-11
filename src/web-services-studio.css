@@ -1,0 +1,55 @@
+/* Web Services Studio — isolated from Smart Call and global workspace. */
+.ws-section{background:#11111a;color:#f7f6fb;padding:clamp(50px,6vw,94px) max(20px,calc((100vw - 1300px)/2));scroll-margin-top:25px}
+.ws-section *{box-sizing:border-box}
+.ws-topline{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#b5a9e7}
+.ws-topline span:last-child{border:1px solid #393549;color:#d2cbe4;border-radius:100px;padding:9px 13px;letter-spacing:.04em;font-size:10px}
+.ws-intro{display:flex;justify-content:space-between;align-items:end;gap:22px;margin-bottom:30px}
+.ws-intro h2{font-size:clamp(36px,5vw,70px);letter-spacing:-.07em;font-weight:580;line-height:.99;margin:0}
+.ws-intro h2 strong{color:#b9a2ff;font-weight:580}
+.ws-intro p{color:#aaa9bd;max-width:400px;font-size:15px;line-height:1.6;margin:0}
+.ws-app{display:grid;grid-template-columns:minmax(315px,.85fr) minmax(0,1.5fr);border-radius:22px;border:1px solid #393647;background:#171722;box-shadow:0 26px 90px #0006;overflow:hidden;min-height:590px}
+.ws-controls{padding:22px;border-right:1px solid #363342;min-width:0}
+.ws-controls-title{display:flex;justify-content:space-between;align-items:center;padding-bottom:21px;border-bottom:1px solid #34313f}
+.ws-controls-title strong{font-size:16px;letter-spacing:-.02em}
+.ws-controls-title small{color:#aba6c0;font-size:11px}
+.ws-fields{max-height:615px;overflow-y:auto;padding:20px 4px 3px 0;scrollbar-color:#59526d transparent;scrollbar-width:thin}
+.ws-field{display:block;margin:0 0 15px;color:#d9d6e6;font-size:12px;font-weight:650;letter-spacing:.01em}
+.ws-field span{display:block;margin:0 0 7px}
+.ws-field input,.ws-field textarea,.ws-field select{color:#fff;background:#22212e;width:100%;border:1px solid #494558;padding:12px 13px;border-radius:9px;font:inherit;font-size:13px;font-weight:450;outline:none;min-width:0;resize:vertical}
+.ws-field textarea{min-height:70px}
+.ws-field input:focus-visible,.ws-field textarea:focus-visible,.ws-field select:focus-visible{border-color:#c9b3ff;box-shadow:0 0 0 3px #b9a2ff25}
+.ws-field input::placeholder,.ws-field textarea::placeholder{color:#777285}
+.ws-field select{color-scheme:dark}
+.ws-field-note{color:#9993a8;font-size:11px;line-height:1.5;margin:-5px 0 19px}
+.ws-fieldset{border:0;padding:0;margin:2px 0 19px}
+.ws-fieldset legend{font-size:12px;font-weight:650;margin-bottom:9px}
+.ws-choices{display:flex;flex-wrap:wrap;gap:8px}
+.ws-choice{border:1px solid #555064;border-radius:9px;background:#242231;color:#e5e2ed;padding:10px 11px;font-size:11px;cursor:pointer;transition:background .15s,border .15s}
+.ws-choice[aria-pressed=true]{background:#b9a2ff;color:#17101f;border-color:#b9a2ff}
+.ws-choice:hover{border-color:#b9a2ff}
+.ws-choice:focus-visible,.ws-action:focus-visible,.ws-view:focus-visible{outline:3px solid #d7c7ff;outline-offset:2px}
+.ws-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:17px 20px;background:#22212e;border-bottom:1px solid #383346}
+.ws-toolbar-left{display:flex;align-items:center;gap:8px}
+.ws-dot{width:8px;height:8px;border-radius:50%;background:#8adabb}
+.ws-toolbar b{font-size:12px}
+.ws-devices{display:flex;gap:5px;padding:4px;border:1px solid #494558;border-radius:10px}
+.ws-view{padding:7px 10px;background:transparent;color:#bfb8d3;border:0;border-radius:7px;cursor:pointer;font-size:11px}
+.ws-view[aria-pressed=true]{background:#b9a2ff;color:#11111a}
+.ws-preview{padding:30px;background:radial-gradient(circle at 28% 8%,#52457658,transparent 48%),#141420;display:flex;align-items:flex-start;justify-content:center;overflow:auto;min-height:570px}
+.ws-frame{background:#fff;border:8px solid #302c3b;border-radius:17px;overflow:hidden;width:100%;max-width:840px;min-height:470px;box-shadow:0 28px 70px #05030b88;transition:max-width .3s ease}
+.ws-frame[data-device=mobile]{max-width:354px}
+.ws-browser{height:30px;background:#eae9ed;display:flex;align-items:center;gap:5px;padding:0 12px}
+.ws-browser i{display:block;width:7px;height:7px;border-radius:50%;background:#b7b4bf}
+.ws-browser span{font-size:10px;color:#77717b;margin:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:50%}
+.ws-frame iframe{width:100%;height:520px;border:0;display:block;background:white}
+.ws-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:18px}
+.ws-action{border:1px solid #70678a;border-radius:11px;background:transparent;color:#fff;cursor:pointer;padding:13px 17px;font-size:12px;font-weight:700}
+.ws-action.primary{background:#b9a2ff;color:#191321;border-color:#b9a2ff}
+.ws-action:hover{filter:brightness(1.13)}
+.ws-action:disabled{cursor:not-allowed;opacity:.4}
+.ws-status{margin:0 0 0 auto;font-size:11px;color:#c3bfd0}
+.ws-disclaimer{font-size:11px;line-height:1.6;color:#ada8bb;margin:13px 0 0}
+.ws-disclaimer strong{color:#ece7ff}
+.ws-noscript{padding:16px;background:#4e2841;color:white}
+@media(max-width:1050px){.ws-app{grid-template-columns:minmax(270px,.9fr) minmax(0,1.1fr)}.ws-preview{padding:19px}}
+@media(max-width:760px){.ws-section{padding:50px 18px}.ws-intro{display:block}.ws-intro p{margin-top:16px}.ws-app{display:flex;flex-direction:column}.ws-controls{border-right:0;border-bottom:1px solid #34313f}.ws-fields{max-height:none}.ws-preview{min-height:480px;padding:12px}.ws-frame iframe{height:490px}.ws-actions .ws-status{flex-basis:100%;margin-left:0}.ws-toolbar{padding:13px}}
