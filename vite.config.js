@@ -26,7 +26,7 @@ export default defineConfig({
         spanishHome: resolve(import.meta.dirname, "es", "index.html"),
         spanishWorkspace: resolve(import.meta.dirname, "es", "workspace", "index.html"),
         ...Object.fromEntries(
-          pages.filter((page) => page !== "workspace").map((page) => ["es-" + page, resolve(import.meta.dirname, "es", page, "index.html")])
+          pages.filter((page) => page !== "workspace" && page !== "temporizador").map((page) => ["es-" + page, resolve(import.meta.dirname, "es", page, "index.html")])
         ),
       },
     },
