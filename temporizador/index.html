@@ -25,6 +25,7 @@
     .top-label { color: #7f8792; font-size: 11px; text-transform: uppercase; letter-spacing: .2em; margin-right: 10px; }
     .icon-button { width: 44px; height: 44px; display: grid; place-items: center; color: #d7dce4; background: #191c22; border: 1px solid #292d34; border-radius: 14px; transition: background .2s ease, border-color .2s ease; }
     .icon-button:hover { background: #242931; border-color: #40474d; }
+    .icon-button svg[hidden] { display: none; }
     .icon-button svg, .action svg { display: block; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .stage { display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center; text-align: center; min-height: 290px; padding: clamp(32px, 6vh, 75px) 0 28px; }
     .eyebrow { font-size: 11px; color: #8e969f; letter-spacing: .25em; font-weight: 700; text-transform: uppercase; }
@@ -358,7 +359,7 @@
         $("fullscreen-button").setAttribute("aria-label", document.fullscreenElement ? "Salir de pantalla completa" : "Pantalla completa");
       });
       window.addEventListener("keydown", (event) => {
-        if (event.altKey || event.ctrlKey || event.metaKey || event.repeat || event.target.closest("input, textarea, select, button")) return;
+        if (event.altKey || event.ctrlKey || event.metaKey || event.repeat || (event.target instanceof Element && event.target.closest("input, textarea, select, button"))) return;
         if (event.code === "Space") { event.preventDefault(); running ? pause() : start(); }
         if (event.key.toLowerCase() === "f") $("fullscreen-button").click();
       });
